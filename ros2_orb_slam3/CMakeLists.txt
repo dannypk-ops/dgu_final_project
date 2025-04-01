@@ -12,6 +12,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O3")
 LIST(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules) # REDUNDANT?
 
 # find dependencies
+find_package(rosidl_default_generators REQUIRED)
 find_package(Python3 REQUIRED)
 find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_python REQUIRED)
@@ -189,7 +190,7 @@ ament_export_dependencies(
 
 # Python node
 # Install Python modules, submodules
-ament_python_install_package(${PROJECT_NAME}) # Install the modules in ros2_orb_slam3/ros2_orb_slam3 folder
+# ament_python_install_package(${PROJECT_NAME}) # Install the modules in ros2_orb_slam3/ros2_orb_slam3 folder
 
 # Install Python executibles
 install(PROGRAMS
@@ -198,5 +199,9 @@ install(PROGRAMS
   DESTINATION lib/${PROJECT_NAME}
 )
 
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/Stereoimage.msg"
+  DEPENDENCIES sensor_msgs std_msgs
+)
 
 ament_package()

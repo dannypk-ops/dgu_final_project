@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "ros2_orb_slam3__py",
+		"source" : "/home/jk/ros2_test/src/build/ros2_orb_slam3/ros2_orb_slam3__py"
+	}
+}

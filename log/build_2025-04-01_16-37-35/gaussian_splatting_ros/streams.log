@@ -1,0 +1,39 @@
+[0.259s] Invoking command in '/home/jk/ros2_test/src/gaussian_splatting_ros': PYTHONPATH=/home/jk/ros2_test/src/build/gaussian_splatting_ros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jk/ros2_test/src/install/gaussian_splatting_ros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/gaussian_splatting_ros build --build-base /home/jk/ros2_test/src/build/gaussian_splatting_ros/build install --record /home/jk/ros2_test/src/build/gaussian_splatting_ros/install.log --single-version-externally-managed install_data
+[0.365s] running egg_info
+[0.365s] creating ../build/gaussian_splatting_ros/gaussian_splatting_ros.egg-info
+[0.365s] writing ../build/gaussian_splatting_ros/gaussian_splatting_ros.egg-info/PKG-INFO
+[0.365s] writing dependency_links to ../build/gaussian_splatting_ros/gaussian_splatting_ros.egg-info/dependency_links.txt
+[0.365s] writing entry points to ../build/gaussian_splatting_ros/gaussian_splatting_ros.egg-info/entry_points.txt
+[0.365s] writing requirements to ../build/gaussian_splatting_ros/gaussian_splatting_ros.egg-info/requires.txt
+[0.365s] writing top-level names to ../build/gaussian_splatting_ros/gaussian_splatting_ros.egg-info/top_level.txt
+[0.365s] writing manifest file '../build/gaussian_splatting_ros/gaussian_splatting_ros.egg-info/SOURCES.txt'
+[0.366s] reading manifest file '../build/gaussian_splatting_ros/gaussian_splatting_ros.egg-info/SOURCES.txt'
+[0.367s] writing manifest file '../build/gaussian_splatting_ros/gaussian_splatting_ros.egg-info/SOURCES.txt'
+[0.367s] running build
+[0.367s] running build_py
+[0.367s] creating /home/jk/ros2_test/src/build/gaussian_splatting_ros/build
+[0.367s] creating /home/jk/ros2_test/src/build/gaussian_splatting_ros/build/lib
+[0.367s] creating /home/jk/ros2_test/src/build/gaussian_splatting_ros/build/lib/gaussian_splatting_ros
+[0.367s] copying gaussian_splatting_ros/__init__.py -> /home/jk/ros2_test/src/build/gaussian_splatting_ros/build/lib/gaussian_splatting_ros
+[0.367s] copying gaussian_splatting_ros/gs_launcher_node.py -> /home/jk/ros2_test/src/build/gaussian_splatting_ros/build/lib/gaussian_splatting_ros
+[0.367s] running install
+[0.367s] running install_lib
+[0.367s] creating /home/jk/ros2_test/src/install/gaussian_splatting_ros/lib/python3.10/site-packages/gaussian_splatting_ros
+[0.367s] copying /home/jk/ros2_test/src/build/gaussian_splatting_ros/build/lib/gaussian_splatting_ros/__init__.py -> /home/jk/ros2_test/src/install/gaussian_splatting_ros/lib/python3.10/site-packages/gaussian_splatting_ros
+[0.367s] copying /home/jk/ros2_test/src/build/gaussian_splatting_ros/build/lib/gaussian_splatting_ros/gs_launcher_node.py -> /home/jk/ros2_test/src/install/gaussian_splatting_ros/lib/python3.10/site-packages/gaussian_splatting_ros
+[0.368s] byte-compiling /home/jk/ros2_test/src/install/gaussian_splatting_ros/lib/python3.10/site-packages/gaussian_splatting_ros/__init__.py to __init__.cpython-310.pyc
+[0.368s] byte-compiling /home/jk/ros2_test/src/install/gaussian_splatting_ros/lib/python3.10/site-packages/gaussian_splatting_ros/gs_launcher_node.py to gs_launcher_node.cpython-310.pyc
+[0.368s] running install_data
+[0.368s] creating /home/jk/ros2_test/src/install/gaussian_splatting_ros/share
+[0.368s] creating /home/jk/ros2_test/src/install/gaussian_splatting_ros/share/ament_index
+[0.368s] creating /home/jk/ros2_test/src/install/gaussian_splatting_ros/share/ament_index/resource_index
+[0.368s] creating /home/jk/ros2_test/src/install/gaussian_splatting_ros/share/ament_index/resource_index/packages
+[0.368s] copying resource/gaussian_splatting_ros -> /home/jk/ros2_test/src/install/gaussian_splatting_ros/share/ament_index/resource_index/packages
+[0.368s] creating /home/jk/ros2_test/src/install/gaussian_splatting_ros/share/gaussian_splatting_ros
+[0.368s] copying package.xml -> /home/jk/ros2_test/src/install/gaussian_splatting_ros/share/gaussian_splatting_ros
+[0.368s] running install_egg_info
+[0.369s] Copying ../build/gaussian_splatting_ros/gaussian_splatting_ros.egg-info to /home/jk/ros2_test/src/install/gaussian_splatting_ros/lib/python3.10/site-packages/gaussian_splatting_ros-0.1.0-py3.10.egg-info
+[0.369s] running install_scripts
+[0.379s] Installing gs_launcher_node script to /home/jk/ros2_test/src/install/gaussian_splatting_ros/lib/gaussian_splatting_ros
+[0.379s] writing list of installed files to '/home/jk/ros2_test/src/build/gaussian_splatting_ros/install.log'
+[0.389s] Invoked command in '/home/jk/ros2_test/src/gaussian_splatting_ros' returned '0': PYTHONPATH=/home/jk/ros2_test/src/build/gaussian_splatting_ros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jk/ros2_test/src/install/gaussian_splatting_ros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/gaussian_splatting_ros build --build-base /home/jk/ros2_test/src/build/gaussian_splatting_ros/build install --record /home/jk/ros2_test/src/build/gaussian_splatting_ros/install.log --single-version-externally-managed install_data

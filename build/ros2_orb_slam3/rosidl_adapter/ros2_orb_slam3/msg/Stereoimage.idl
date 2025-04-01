@@ -1,0 +1,15 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from ros2_orb_slam3/msg/Stereoimage.msg
+// generated code does not contain a copyright notice
+
+#include "sensor_msgs/msg/Image.idl"
+
+module ros2_orb_slam3 {
+  module msg {
+    struct Stereoimage {
+      sensor_msgs::msg::Image left;
+
+      sensor_msgs::msg::Image right;
+    };
+  };
+};

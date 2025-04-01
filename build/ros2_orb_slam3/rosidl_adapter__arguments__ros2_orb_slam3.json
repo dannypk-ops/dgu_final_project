@@ -1,0 +1,6 @@
+{
+  "package_name": "ros2_orb_slam3",
+  "non_idl_tuples": [
+    "/home/jk/ros2_test/src/ros2_orb_slam3:msg/Stereoimage.msg"
+  ]
+}

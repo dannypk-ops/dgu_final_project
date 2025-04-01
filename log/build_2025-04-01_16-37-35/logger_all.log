@@ -1,0 +1,513 @@
+[0.053s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'gaussian_splatting_ros']
+[0.053s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=24, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['gaussian_splatting_ros'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7e610d34ad70>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7e610d308310>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7e610d308310>>, mixin_verb=('build',))
+[0.132s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.132s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.132s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.132s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.132s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.132s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.132s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/jk/ros2_test/src'
+[0.133s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.133s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.133s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.133s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.133s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.133s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.133s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.133s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.133s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting) by extensions ['ignore', 'ignore_ament_install']
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting) by extension 'ignore'
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting) by extension 'ignore_ament_install'
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting) by extensions ['colcon_pkg']
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting) by extension 'colcon_pkg'
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting) by extensions ['colcon_meta']
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting) by extension 'colcon_meta'
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting) by extensions ['ros']
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting) by extension 'ros'
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting) by extensions ['cmake', 'python']
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting) by extension 'cmake'
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting) by extension 'python'
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting) by extensions ['python_setup_py']
+[0.138s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting) by extension 'python_setup_py'
+[0.139s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/SIBR_viewers) by extensions ['ignore', 'ignore_ament_install']
+[0.139s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/SIBR_viewers) by extension 'ignore'
+[0.139s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/SIBR_viewers) by extension 'ignore_ament_install'
+[0.139s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/SIBR_viewers) by extensions ['colcon_pkg']
+[0.139s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/SIBR_viewers) by extension 'colcon_pkg'
+[0.139s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/SIBR_viewers) by extensions ['colcon_meta']
+[0.139s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/SIBR_viewers) by extension 'colcon_meta'
+[0.139s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/SIBR_viewers) by extensions ['ros']
+[0.139s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/SIBR_viewers) by extension 'ros'
+[0.139s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/SIBR_viewers) by extensions ['cmake', 'python']
+[0.139s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/SIBR_viewers) by extension 'cmake'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/SIBR_viewers) by extension 'python'
+[0.153s] DEBUG:colcon.colcon_core.package_identification:Package 'gaussian-splatting/SIBR_viewers' with type 'cmake' and name 'sibr_projects'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments) by extensions ['ignore', 'ignore_ament_install']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments) by extension 'ignore'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments) by extension 'ignore_ament_install'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments) by extensions ['colcon_pkg']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments) by extension 'colcon_pkg'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments) by extensions ['colcon_meta']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments) by extension 'colcon_meta'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments) by extensions ['ros']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments) by extension 'ros'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments) by extensions ['cmake', 'python']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments) by extension 'cmake'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments) by extension 'python'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments) by extensions ['python_setup_py']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments) by extension 'python_setup_py'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments/__pycache__) by extensions ['ignore', 'ignore_ament_install']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments/__pycache__) by extension 'ignore'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments/__pycache__) by extension 'ignore_ament_install'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments/__pycache__) by extensions ['colcon_pkg']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments/__pycache__) by extension 'colcon_pkg'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments/__pycache__) by extensions ['colcon_meta']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments/__pycache__) by extension 'colcon_meta'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments/__pycache__) by extensions ['ros']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments/__pycache__) by extension 'ros'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments/__pycache__) by extensions ['cmake', 'python']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments/__pycache__) by extension 'cmake'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments/__pycache__) by extension 'python'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments/__pycache__) by extensions ['python_setup_py']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/arguments/__pycache__) by extension 'python_setup_py'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets) by extensions ['ignore', 'ignore_ament_install']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets) by extension 'ignore'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets) by extension 'ignore_ament_install'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets) by extensions ['colcon_pkg']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets) by extension 'colcon_pkg'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets) by extensions ['colcon_meta']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets) by extension 'colcon_meta'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets) by extensions ['ros']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets) by extension 'ros'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets) by extensions ['cmake', 'python']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets) by extension 'cmake'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets) by extension 'python'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets) by extensions ['python_setup_py']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets) by extension 'python_setup_py'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets/charts) by extensions ['ignore', 'ignore_ament_install']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets/charts) by extension 'ignore'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets/charts) by extension 'ignore_ament_install'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets/charts) by extensions ['colcon_pkg']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets/charts) by extension 'colcon_pkg'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets/charts) by extensions ['colcon_meta']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets/charts) by extension 'colcon_meta'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets/charts) by extensions ['ros']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets/charts) by extension 'ros'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets/charts) by extensions ['cmake', 'python']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets/charts) by extension 'cmake'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets/charts) by extension 'python'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets/charts) by extensions ['python_setup_py']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/assets/charts) by extension 'python_setup_py'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer) by extensions ['ignore', 'ignore_ament_install']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer) by extension 'ignore'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer) by extension 'ignore_ament_install'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer) by extensions ['colcon_pkg']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer) by extension 'colcon_pkg'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer) by extensions ['colcon_meta']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer) by extension 'colcon_meta'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer) by extensions ['ros']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer) by extension 'ros'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer) by extensions ['cmake', 'python']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer) by extension 'cmake'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer) by extension 'python'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer) by extensions ['python_setup_py']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer) by extension 'python_setup_py'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer/__pycache__) by extensions ['ignore', 'ignore_ament_install']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer/__pycache__) by extension 'ignore'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer/__pycache__) by extension 'ignore_ament_install'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer/__pycache__) by extensions ['colcon_pkg']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer/__pycache__) by extension 'colcon_pkg'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer/__pycache__) by extensions ['colcon_meta']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer/__pycache__) by extension 'colcon_meta'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer/__pycache__) by extensions ['ros']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer/__pycache__) by extension 'ros'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer/__pycache__) by extensions ['cmake', 'python']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer/__pycache__) by extension 'cmake'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer/__pycache__) by extension 'python'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer/__pycache__) by extensions ['python_setup_py']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/gaussian_renderer/__pycache__) by extension 'python_setup_py'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch) by extensions ['ignore', 'ignore_ament_install']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch) by extension 'ignore'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch) by extension 'ignore_ament_install'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch) by extensions ['colcon_pkg']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch) by extension 'colcon_pkg'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch) by extensions ['colcon_meta']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch) by extension 'colcon_meta'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch) by extensions ['ros']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch) by extension 'ros'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch) by extensions ['cmake', 'python']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch) by extension 'cmake'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch) by extension 'python'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch) by extensions ['python_setup_py']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch) by extension 'python_setup_py'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch/modules) by extensions ['ignore', 'ignore_ament_install']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch/modules) by extension 'ignore'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch/modules) by extension 'ignore_ament_install'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch/modules) by extensions ['colcon_pkg']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch/modules) by extension 'colcon_pkg'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch/modules) by extensions ['colcon_meta']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch/modules) by extension 'colcon_meta'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch/modules) by extensions ['ros']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch/modules) by extension 'ros'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch/modules) by extensions ['cmake', 'python']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch/modules) by extension 'cmake'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch/modules) by extension 'python'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch/modules) by extensions ['python_setup_py']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/lpipsPyTorch/modules) by extension 'python_setup_py'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output) by extensions ['ignore', 'ignore_ament_install']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output) by extension 'ignore'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output) by extension 'ignore_ament_install'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output) by extensions ['colcon_pkg']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output) by extension 'colcon_pkg'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output) by extensions ['colcon_meta']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output) by extension 'colcon_meta'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output) by extensions ['ros']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output) by extension 'ros'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output) by extensions ['cmake', 'python']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output) by extension 'cmake'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output) by extension 'python'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output) by extensions ['python_setup_py']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output) by extension 'python_setup_py'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9) by extensions ['ignore', 'ignore_ament_install']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9) by extension 'ignore'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9) by extension 'ignore_ament_install'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9) by extensions ['colcon_pkg']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9) by extension 'colcon_pkg'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9) by extensions ['colcon_meta']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9) by extension 'colcon_meta'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9) by extensions ['ros']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9) by extension 'ros'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9) by extensions ['cmake', 'python']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9) by extension 'cmake'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9) by extension 'python'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9) by extensions ['python_setup_py']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9) by extension 'python_setup_py'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud) by extensions ['ignore', 'ignore_ament_install']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud) by extension 'ignore'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud) by extension 'ignore_ament_install'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud) by extensions ['colcon_pkg']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud) by extension 'colcon_pkg'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud) by extensions ['colcon_meta']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud) by extension 'colcon_meta'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud) by extensions ['ros']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud) by extension 'ros'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud) by extensions ['cmake', 'python']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud) by extension 'cmake'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud) by extension 'python'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud) by extensions ['python_setup_py']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud) by extension 'python_setup_py'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_30000) by extensions ['ignore', 'ignore_ament_install']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_30000) by extension 'ignore'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_30000) by extension 'ignore_ament_install'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_30000) by extensions ['colcon_pkg']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_30000) by extension 'colcon_pkg'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_30000) by extensions ['colcon_meta']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_30000) by extension 'colcon_meta'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_30000) by extensions ['ros']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_30000) by extension 'ros'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_30000) by extensions ['cmake', 'python']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_30000) by extension 'cmake'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_30000) by extension 'python'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_30000) by extensions ['python_setup_py']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_30000) by extension 'python_setup_py'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_7000) by extensions ['ignore', 'ignore_ament_install']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_7000) by extension 'ignore'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_7000) by extension 'ignore_ament_install'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_7000) by extensions ['colcon_pkg']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_7000) by extension 'colcon_pkg'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_7000) by extensions ['colcon_meta']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_7000) by extension 'colcon_meta'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_7000) by extensions ['ros']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_7000) by extension 'ros'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_7000) by extensions ['cmake', 'python']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_7000) by extension 'cmake'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_7000) by extension 'python'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_7000) by extensions ['python_setup_py']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/1c424f5d-9/point_cloud/iteration_7000) by extension 'python_setup_py'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e) by extensions ['ignore', 'ignore_ament_install']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e) by extension 'ignore'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e) by extension 'ignore_ament_install'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e) by extensions ['colcon_pkg']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e) by extension 'colcon_pkg'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e) by extensions ['colcon_meta']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e) by extension 'colcon_meta'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e) by extensions ['ros']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e) by extension 'ros'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e) by extensions ['cmake', 'python']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e) by extension 'cmake'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e) by extension 'python'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e) by extensions ['python_setup_py']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e) by extension 'python_setup_py'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud) by extensions ['ignore', 'ignore_ament_install']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud) by extension 'ignore'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud) by extension 'ignore_ament_install'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud) by extensions ['colcon_pkg']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud) by extension 'colcon_pkg'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud) by extensions ['colcon_meta']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud) by extension 'colcon_meta'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud) by extensions ['ros']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud) by extension 'ros'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud) by extensions ['cmake', 'python']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud) by extension 'cmake'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud) by extension 'python'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud) by extensions ['python_setup_py']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud) by extension 'python_setup_py'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_30000) by extensions ['ignore', 'ignore_ament_install']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_30000) by extension 'ignore'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_30000) by extension 'ignore_ament_install'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_30000) by extensions ['colcon_pkg']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_30000) by extension 'colcon_pkg'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_30000) by extensions ['colcon_meta']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_30000) by extension 'colcon_meta'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_30000) by extensions ['ros']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_30000) by extension 'ros'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_30000) by extensions ['cmake', 'python']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_30000) by extension 'cmake'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_30000) by extension 'python'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_30000) by extensions ['python_setup_py']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_30000) by extension 'python_setup_py'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_7000) by extensions ['ignore', 'ignore_ament_install']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_7000) by extension 'ignore'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_7000) by extension 'ignore_ament_install'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_7000) by extensions ['colcon_pkg']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_7000) by extension 'colcon_pkg'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_7000) by extensions ['colcon_meta']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_7000) by extension 'colcon_meta'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_7000) by extensions ['ros']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_7000) by extension 'ros'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_7000) by extensions ['cmake', 'python']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_7000) by extension 'cmake'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_7000) by extension 'python'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_7000) by extensions ['python_setup_py']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/output/720c6530-e/point_cloud/iteration_7000) by extension 'python_setup_py'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene) by extensions ['ignore', 'ignore_ament_install']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene) by extension 'ignore'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene) by extension 'ignore_ament_install'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene) by extensions ['colcon_pkg']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene) by extension 'colcon_pkg'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene) by extensions ['colcon_meta']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene) by extension 'colcon_meta'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene) by extensions ['ros']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene) by extension 'ros'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene) by extensions ['cmake', 'python']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene) by extension 'cmake'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene) by extension 'python'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene) by extensions ['python_setup_py']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene) by extension 'python_setup_py'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene/__pycache__) by extensions ['ignore', 'ignore_ament_install']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene/__pycache__) by extension 'ignore'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene/__pycache__) by extension 'ignore_ament_install'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene/__pycache__) by extensions ['colcon_pkg']
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene/__pycache__) by extension 'colcon_pkg'
+[0.157s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene/__pycache__) by extensions ['colcon_meta']
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene/__pycache__) by extension 'colcon_meta'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene/__pycache__) by extensions ['ros']
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene/__pycache__) by extension 'ros'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene/__pycache__) by extensions ['cmake', 'python']
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene/__pycache__) by extension 'cmake'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene/__pycache__) by extension 'python'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene/__pycache__) by extensions ['python_setup_py']
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/scene/__pycache__) by extension 'python_setup_py'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules) by extensions ['ignore', 'ignore_ament_install']
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules) by extension 'ignore'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules) by extension 'ignore_ament_install'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules) by extensions ['colcon_pkg']
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules) by extension 'colcon_pkg'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules) by extensions ['colcon_meta']
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules) by extension 'colcon_meta'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules) by extensions ['ros']
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules) by extension 'ros'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules) by extensions ['cmake', 'python']
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules) by extension 'cmake'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules) by extension 'python'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules) by extensions ['python_setup_py']
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules) by extension 'python_setup_py'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/diff-gaussian-rasterization) by extensions ['ignore', 'ignore_ament_install']
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/diff-gaussian-rasterization) by extension 'ignore'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/diff-gaussian-rasterization) by extension 'ignore_ament_install'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/diff-gaussian-rasterization) by extensions ['colcon_pkg']
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/diff-gaussian-rasterization) by extension 'colcon_pkg'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/diff-gaussian-rasterization) by extensions ['colcon_meta']
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/diff-gaussian-rasterization) by extension 'colcon_meta'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/diff-gaussian-rasterization) by extensions ['ros']
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/diff-gaussian-rasterization) by extension 'ros'
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/diff-gaussian-rasterization) by extensions ['cmake', 'python']
+[0.158s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/diff-gaussian-rasterization) by extension 'cmake'
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/diff-gaussian-rasterization) by extension 'python'
+[0.160s] DEBUG:colcon.colcon_core.package_identification:Package 'gaussian-splatting/submodules/diff-gaussian-rasterization' with type 'cmake' and name 'DiffRast'
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/fused-ssim) by extensions ['ignore', 'ignore_ament_install']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/fused-ssim) by extension 'ignore'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/fused-ssim) by extension 'ignore_ament_install'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/fused-ssim) by extensions ['colcon_pkg']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/fused-ssim) by extension 'colcon_pkg'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/fused-ssim) by extensions ['colcon_meta']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/fused-ssim) by extension 'colcon_meta'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/fused-ssim) by extensions ['ros']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/fused-ssim) by extension 'ros'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/fused-ssim) by extensions ['cmake', 'python']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/fused-ssim) by extension 'cmake'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/fused-ssim) by extension 'python'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/fused-ssim) by extensions ['python_setup_py']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/fused-ssim) by extension 'python_setup_py'
+[1.213s] DEBUG:colcon.colcon_core.package_identification:Package 'gaussian-splatting/submodules/fused-ssim' with type 'python' and name 'fused_ssim'
+[1.213s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/simple-knn) by extensions ['ignore', 'ignore_ament_install']
+[1.213s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/simple-knn) by extension 'ignore'
+[1.214s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/simple-knn) by extension 'ignore_ament_install'
+[1.214s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/simple-knn) by extensions ['colcon_pkg']
+[1.214s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/simple-knn) by extension 'colcon_pkg'
+[1.214s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/simple-knn) by extensions ['colcon_meta']
+[1.214s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/simple-knn) by extension 'colcon_meta'
+[1.214s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/simple-knn) by extensions ['ros']
+[1.214s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/simple-knn) by extension 'ros'
+[1.214s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/simple-knn) by extensions ['cmake', 'python']
+[1.214s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/simple-knn) by extension 'cmake'
+[1.214s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/simple-knn) by extension 'python'
+[1.214s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/simple-knn) by extensions ['python_setup_py']
+[1.214s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/submodules/simple-knn) by extension 'python_setup_py'
+[2.238s] DEBUG:colcon.colcon_core.package_identification:Package 'gaussian-splatting/submodules/simple-knn' with type 'python' and name 'simple_knn'
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils) by extensions ['ignore', 'ignore_ament_install']
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils) by extension 'ignore'
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils) by extension 'ignore_ament_install'
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils) by extensions ['colcon_pkg']
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils) by extension 'colcon_pkg'
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils) by extensions ['colcon_meta']
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils) by extension 'colcon_meta'
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils) by extensions ['ros']
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils) by extension 'ros'
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils) by extensions ['cmake', 'python']
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils) by extension 'cmake'
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils) by extension 'python'
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils) by extensions ['python_setup_py']
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils) by extension 'python_setup_py'
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils/__pycache__) by extensions ['ignore', 'ignore_ament_install']
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils/__pycache__) by extension 'ignore'
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils/__pycache__) by extension 'ignore_ament_install'
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils/__pycache__) by extensions ['colcon_pkg']
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils/__pycache__) by extension 'colcon_pkg'
+[2.238s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils/__pycache__) by extensions ['colcon_meta']
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils/__pycache__) by extension 'colcon_meta'
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils/__pycache__) by extensions ['ros']
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils/__pycache__) by extension 'ros'
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils/__pycache__) by extensions ['cmake', 'python']
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils/__pycache__) by extension 'cmake'
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils/__pycache__) by extension 'python'
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils/__pycache__) by extensions ['python_setup_py']
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian-splatting/utils/__pycache__) by extension 'python_setup_py'
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian_splatting_ros) by extensions ['ignore', 'ignore_ament_install']
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian_splatting_ros) by extension 'ignore'
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian_splatting_ros) by extension 'ignore_ament_install'
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian_splatting_ros) by extensions ['colcon_pkg']
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian_splatting_ros) by extension 'colcon_pkg'
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian_splatting_ros) by extensions ['colcon_meta']
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian_splatting_ros) by extension 'colcon_meta'
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian_splatting_ros) by extensions ['ros']
+[2.239s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian_splatting_ros) by extension 'ros'
+[2.240s] DEBUG:colcon.colcon_core.package_identification:Found ROS schema reference in package manifest in 'gaussian_splatting_ros'
+[2.240s] WARNING:colcon.colcon_core.package_identification:Failed to parse ROS package manifest in 'gaussian_splatting_ros': Error(s) in package 'gaussian_splatting_ros/package.xml':
+Error(s):
+- The generic dependency on 'rclpy' is redundant with: exec_depend
+- The generic dependency on 'std_msgs' is redundant with: exec_depend
+[2.240s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian_splatting_ros) by extensions ['cmake', 'python']
+[2.240s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian_splatting_ros) by extension 'cmake'
+[2.240s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian_splatting_ros) by extension 'python'
+[2.240s] DEBUG:colcon.colcon_core.package_identification:Python package in 'gaussian_splatting_ros' passes arguments to the setup() function which requires a different identification extension than 'python'
+[2.240s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian_splatting_ros) by extensions ['python_setup_py']
+[2.240s] Level 1:colcon.colcon_core.package_identification:_identify(gaussian_splatting_ros) by extension 'python_setup_py'
+[2.356s] DEBUG:colcon.colcon_core.package_identification:Package 'gaussian_splatting_ros' with type 'python' and name 'gaussian_splatting_ros'
+[2.356s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[2.356s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[2.356s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[2.356s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[2.356s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[2.356s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[2.356s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_orb_slam3) by extensions ['ignore', 'ignore_ament_install']
+[2.356s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_orb_slam3) by extension 'ignore'
+[2.356s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_orb_slam3) by extension 'ignore_ament_install'
+[2.356s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_orb_slam3) by extensions ['colcon_pkg']
+[2.356s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_orb_slam3) by extension 'colcon_pkg'
+[2.356s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_orb_slam3) by extensions ['colcon_meta']
+[2.356s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_orb_slam3) by extension 'colcon_meta'
+[2.356s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_orb_slam3) by extensions ['ros']
+[2.356s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_orb_slam3) by extension 'ros'
+[2.357s] DEBUG:colcon.colcon_core.package_identification:Package 'ros2_orb_slam3' with type 'ros.ament_cmake' and name 'ros2_orb_slam3'
+[2.357s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[2.357s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[2.357s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[2.357s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[2.357s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[2.372s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'DiffRast' in 'gaussian-splatting/submodules/diff-gaussian-rasterization'
+[2.372s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'fused_ssim' in 'gaussian-splatting/submodules/fused-ssim'
+[2.372s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'ros2_orb_slam3' in 'ros2_orb_slam3'
+[2.372s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'sibr_projects' in 'gaussian-splatting/SIBR_viewers'
+[2.372s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'simple_knn' in 'gaussian-splatting/submodules/simple-knn'
+[2.373s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[2.373s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[2.373s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/jk/ros2_test/install/ros2_orb_slam3' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[2.373s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/jk/ros2_test/install/ros2_orb_slam3' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[2.373s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/jk/ros2_test/install
+[2.374s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/jk/install
+[2.374s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 271 installed packages in /opt/ros/humble
+[2.375s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[2.391s] Level 5:colcon.colcon_core.verb:set package 'gaussian_splatting_ros' build argument 'cmake_args' from command line to 'None'
+[2.391s] Level 5:colcon.colcon_core.verb:set package 'gaussian_splatting_ros' build argument 'cmake_target' from command line to 'None'
+[2.391s] Level 5:colcon.colcon_core.verb:set package 'gaussian_splatting_ros' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.391s] Level 5:colcon.colcon_core.verb:set package 'gaussian_splatting_ros' build argument 'cmake_clean_cache' from command line to 'False'
+[2.391s] Level 5:colcon.colcon_core.verb:set package 'gaussian_splatting_ros' build argument 'cmake_clean_first' from command line to 'False'
+[2.391s] Level 5:colcon.colcon_core.verb:set package 'gaussian_splatting_ros' build argument 'cmake_force_configure' from command line to 'False'
+[2.391s] Level 5:colcon.colcon_core.verb:set package 'gaussian_splatting_ros' build argument 'ament_cmake_args' from command line to 'None'
+[2.391s] Level 5:colcon.colcon_core.verb:set package 'gaussian_splatting_ros' build argument 'catkin_cmake_args' from command line to 'None'
+[2.391s] Level 5:colcon.colcon_core.verb:set package 'gaussian_splatting_ros' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.391s] DEBUG:colcon.colcon_core.verb:Building package 'gaussian_splatting_ros' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jk/ros2_test/src/build/gaussian_splatting_ros', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jk/ros2_test/src/install/gaussian_splatting_ros', 'merge_install': False, 'path': '/home/jk/ros2_test/src/gaussian_splatting_ros', 'symlink_install': False, 'test_result_base': None}
+[2.391s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[2.392s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[2.392s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/jk/ros2_test/src/gaussian_splatting_ros'
+[2.393s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[2.393s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.393s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.651s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jk/ros2_test/src/gaussian_splatting_ros': PYTHONPATH=/home/jk/ros2_test/src/build/gaussian_splatting_ros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jk/ros2_test/src/install/gaussian_splatting_ros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/gaussian_splatting_ros build --build-base /home/jk/ros2_test/src/build/gaussian_splatting_ros/build install --record /home/jk/ros2_test/src/build/gaussian_splatting_ros/install.log --single-version-externally-managed install_data
+[2.781s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jk/ros2_test/src/gaussian_splatting_ros' returned '0': PYTHONPATH=/home/jk/ros2_test/src/build/gaussian_splatting_ros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jk/ros2_test/src/install/gaussian_splatting_ros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/gaussian_splatting_ros build --build-base /home/jk/ros2_test/src/build/gaussian_splatting_ros/build install --record /home/jk/ros2_test/src/build/gaussian_splatting_ros/install.log --single-version-externally-managed install_data
+[2.782s] Level 1:colcon.colcon_core.environment:checking '/home/jk/ros2_test/src/install/gaussian_splatting_ros' for CMake module files
+[2.782s] Level 1:colcon.colcon_core.environment:checking '/home/jk/ros2_test/src/install/gaussian_splatting_ros' for CMake config files
+[2.783s] Level 1:colcon.colcon_core.environment:checking '/home/jk/ros2_test/src/install/gaussian_splatting_ros/lib'
+[2.783s] Level 1:colcon.colcon_core.environment:checking '/home/jk/ros2_test/src/install/gaussian_splatting_ros/bin'
+[2.783s] Level 1:colcon.colcon_core.environment:checking '/home/jk/ros2_test/src/install/gaussian_splatting_ros/lib/pkgconfig/gaussian_splatting_ros.pc'
+[2.783s] Level 1:colcon.colcon_core.environment:checking '/home/jk/ros2_test/src/install/gaussian_splatting_ros/lib/python3.10/site-packages'
+[2.783s] Level 1:colcon.colcon_core.shell:create_environment_hook('gaussian_splatting_ros', 'pythonpath')
+[2.783s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jk/ros2_test/src/install/gaussian_splatting_ros/share/gaussian_splatting_ros/hook/pythonpath.ps1'
+[2.783s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jk/ros2_test/src/install/gaussian_splatting_ros/share/gaussian_splatting_ros/hook/pythonpath.dsv'
+[2.783s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jk/ros2_test/src/install/gaussian_splatting_ros/share/gaussian_splatting_ros/hook/pythonpath.sh'
+[2.784s] Level 1:colcon.colcon_core.environment:checking '/home/jk/ros2_test/src/install/gaussian_splatting_ros/bin'
+[2.784s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(gaussian_splatting_ros)
+[2.784s] INFO:colcon.colcon_core.shell:Creating package script '/home/jk/ros2_test/src/install/gaussian_splatting_ros/share/gaussian_splatting_ros/package.ps1'
+[2.784s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jk/ros2_test/src/install/gaussian_splatting_ros/share/gaussian_splatting_ros/package.dsv'
+[2.784s] INFO:colcon.colcon_core.shell:Creating package script '/home/jk/ros2_test/src/install/gaussian_splatting_ros/share/gaussian_splatting_ros/package.sh'
+[2.785s] INFO:colcon.colcon_core.shell:Creating package script '/home/jk/ros2_test/src/install/gaussian_splatting_ros/share/gaussian_splatting_ros/package.bash'
+[2.785s] INFO:colcon.colcon_core.shell:Creating package script '/home/jk/ros2_test/src/install/gaussian_splatting_ros/share/gaussian_splatting_ros/package.zsh'
+[2.785s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jk/ros2_test/src/install/gaussian_splatting_ros/share/colcon-core/packages/gaussian_splatting_ros)
+[2.785s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[2.786s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[2.786s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[2.786s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[2.788s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[2.788s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[2.788s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[2.794s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[2.794s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jk/ros2_test/src/install/local_setup.ps1'
+[2.795s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/jk/ros2_test/src/install/_local_setup_util_ps1.py'
+[2.795s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jk/ros2_test/src/install/setup.ps1'
+[2.796s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jk/ros2_test/src/install/local_setup.sh'
+[2.796s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/jk/ros2_test/src/install/_local_setup_util_sh.py'
+[2.796s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jk/ros2_test/src/install/setup.sh'
+[2.797s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jk/ros2_test/src/install/local_setup.bash'
+[2.797s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jk/ros2_test/src/install/setup.bash'
+[2.797s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jk/ros2_test/src/install/local_setup.zsh'
+[2.797s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jk/ros2_test/src/install/setup.zsh'

@@ -1,0 +1,3 @@
+[console_scripts]
+gs_launcher_node = gaussian_splatting_ros.gs_launcher_node:main
+

@@ -1,0 +1,16 @@
+package.xml
+setup.cfg
+setup.py
+../build/gaussian_splatting_ros/gaussian_splatting_ros.egg-info/PKG-INFO
+../build/gaussian_splatting_ros/gaussian_splatting_ros.egg-info/SOURCES.txt
+../build/gaussian_splatting_ros/gaussian_splatting_ros.egg-info/dependency_links.txt
+../build/gaussian_splatting_ros/gaussian_splatting_ros.egg-info/entry_points.txt
+../build/gaussian_splatting_ros/gaussian_splatting_ros.egg-info/requires.txt
+../build/gaussian_splatting_ros/gaussian_splatting_ros.egg-info/top_level.txt
+../build/gaussian_splatting_ros/gaussian_splatting_ros.egg-info/zip-safe
+gaussian_splatting_ros/__init__.py
+gaussian_splatting_ros/gs_launcher_node.py
+resource/gaussian_splatting_ros
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py
