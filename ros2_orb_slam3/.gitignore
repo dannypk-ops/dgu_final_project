@@ -2,3 +2,5 @@ README.md
 *.mp4
 .vscode/
 *.png
+*.bin
+*.ply
