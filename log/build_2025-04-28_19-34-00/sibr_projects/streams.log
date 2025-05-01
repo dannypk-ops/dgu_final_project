@@ -1,0 +1,81 @@
+[1.235s] Invoking command in '/home/jk/ros2_test/src/build/sibr_projects': /usr/bin/cmake /home/jk/ros2_test/src/gaussian-splatting/SIBR_viewers -DCMAKE_INSTALL_PREFIX=/home/jk/ros2_test/src/install/sibr_projects
+[1.244s] -- Git found: /usr/bin/git
+[1.254s] -- SIBR version :
+[1.254s]  BRANCH 
+[1.254s]  COMMIT_HASH 
+[1.254s]  TAG 
+[1.254s]  VERSION -
+[1.254s] -- Install path set to /home/jk/ros2_test/src/gaussian-splatting/SIBR_viewers/install.
+[1.254s] [0mNote you can provide default program options for Visual Studio target properties by either setting a value for the cmake cached variable 'SIBR_PROGRAMARGS' or by setting a new environment variable 'SIBR_PROGRAMARGS'[0m
+[1.255s] -- 
+[1.255s] 
+[1.255s] ****************** Handling core dependencies ******************
+[1.262s] [0mActivating EGL support for headless GLFW/GLEW[0m
+[1.262s] [0mThere is no provided GLEW library for your compiler, relying on find_package to find it[0m
+[1.270s] -- FindGLEW: did not find GLEW CMake config file. Searching for libraries.
+[1.270s] -- FindGLEW: GLEW_USE_STATIC_LIBS is undefined. Treated as FALSE.
+[1.270s] -- FindGLEW: GLEW_INCLUDE_DIR: /usr/include
+[1.270s] -- FindGLEW: GLEW_INCLUDE_DIRS: /usr/include
+[1.270s] -- FindGLEW: CMAKE_FIND_LIBRARY_SUFFIXES for SHARED: .so;.a
+[1.277s] -- FindGLEW: CMAKE_FIND_LIBRARY_SUFFIXES for STATIC: .so
+[1.279s] -- FindGLEW: GLEW_SHARED_LIBRARY_RELEASE: /usr/lib/x86_64-linux-gnu/libGLEW.so
+[1.279s] -- FindGLEW: GLEW_STATIC_LIBRARY_RELEASE: /usr/lib/x86_64-linux-gnu/libGLEW.a
+[1.279s] -- FindGLEW: GLEW_SHARED_LIBRARY_DEBUG: GLEW_SHARED_LIBRARY_DEBUG-NOTFOUND
+[1.279s] -- FindGLEW: GLEW_STATIC_LIBRARY_DEBUG: GLEW_STATIC_LIBRARY_DEBUG-NOTFOUND
+[1.279s] -- FindGLEW: GLEW_SHARED_LIBRARY: /usr/lib/x86_64-linux-gnu/libGLEW.so
+[1.279s] -- FindGLEW: GLEW_STATIC_LIBRARY: /usr/lib/x86_64-linux-gnu/libGLEW.a
+[1.279s] -- FindGLEW: GLEW_LIBRARIES: /usr/lib/x86_64-linux-gnu/libGLEW.so
+[1.292s] -- FindGLEW: GLEW_VERSION_MAJOR: 2
+[1.292s] -- FindGLEW: GLEW_VERSION_MINOR: 2
+[1.292s] -- FindGLEW: GLEW_VERSION_MICRO: 0
+[1.292s] -- FindGLEW: GLEW_VERSION: 2.2.0
+[1.292s] [0mThere is no provided ASSIMP library for your compiler, relying on find_package to find it[0m
+[1.292s] [0mNO ASSIMP DIR ASSIMP_DIR[0m
+[1.293s] [0mSETTING ASSIMP DIR ASSIMP_DIR[0m
+[1.293s] [0mASSIMP DIR ASSIMP_DIR[0m
+[1.293s] -- FindGLEW: Creating GLEW::glew imported target.
+[1.293s] -- FindGLEW: Creating GLEW::GLEW imported target.
+[1.300s] [33mCMake Warning at cmake/linux/dependencies.cmake:127 (find_package):
+[1.300s]   By not providing "Findembree.cmake" in CMAKE_MODULE_PATH this project has
+[1.300s]   asked CMake to find a package configuration file provided by "embree", but
+[1.300s]   CMake did not find one.
+[1.300s] 
+[1.300s]   Could not find a package configuration file provided by "embree" (requested
+[1.300s]   version 3.0) with any of the following names:
+[1.300s] 
+[1.300s]     embreeConfig.cmake
+[1.300s]     embree-config.cmake
+[1.300s] 
+[1.300s]   Add the installation prefix of "embree" to CMAKE_PREFIX_PATH or set
+[1.300s]   "embree_DIR" to a directory containing one of the above files.  If "embree"
+[1.300s]   provides a separate development package or SDK, be sure it has been
+[1.300s]   installed.
+[1.300s] Call Stack (most recent call first):
+[1.300s]   cmake/linux/include_once.cmake:20 (include)
+[1.300s]   src/CMakeLists.txt:46 (include_once)
+[1.300s] 
+[1.300s] [0m
+[1.305s] [0mThere is no provided OpenCV library for your compiler, relying on find_package to find it[0m
+[1.315s] [31mCMake Error at cmake/linux/dependencies.cmake:284 (find_package):
+[1.315s]   By not providing "Findglfw3.cmake" in CMAKE_MODULE_PATH this project has
+[1.315s]   asked CMake to find a package configuration file provided by "glfw3", but
+[1.315s]   CMake did not find one.
+[1.315s] 
+[1.315s]   Could not find a package configuration file provided by "glfw3" with any of
+[1.315s]   the following names:
+[1.315s] 
+[1.315s]     glfw3Config.cmake
+[1.315s]     glfw3-config.cmake
+[1.315s] 
+[1.315s]   Add the installation prefix of "glfw3" to CMAKE_PREFIX_PATH or set
+[1.315s]   "glfw3_DIR" to a directory containing one of the above files.  If "glfw3"
+[1.315s]   provides a separate development package or SDK, be sure it has been
+[1.315s]   installed.
+[1.316s] Call Stack (most recent call first):
+[1.316s]   cmake/linux/include_once.cmake:20 (include)
+[1.316s]   src/CMakeLists.txt:46 (include_once)
+[1.316s] 
+[1.316s] [0m
+[1.316s] -- Configuring incomplete, errors occurred!
+[1.316s] See also "/home/jk/ros2_test/src/build/sibr_projects/CMakeFiles/CMakeOutput.log".
+[2.478s] Invoked command in '/home/jk/ros2_test/src/build/sibr_projects' returned '1': /usr/bin/cmake /home/jk/ros2_test/src/gaussian-splatting/SIBR_viewers -DCMAKE_INSTALL_PREFIX=/home/jk/ros2_test/src/install/sibr_projects

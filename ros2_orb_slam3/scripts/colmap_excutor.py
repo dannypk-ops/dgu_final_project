@@ -111,23 +111,24 @@ class ColmapPipelineNode(Node):
     def __init__(self):
         super().__init__('colmap_pipeline_node')
         self.sub = self.create_subscription(
-            Bool, '/mono_py_driver/SLAM_done', self.callback, 10
+            String, '/mono_py_driver/SLAM_done', self.callback, 10
         )
 
         self.gs_pub = self.create_publisher(  # ← 새로운 publisher 추가
             String, '/gs_source_path', 10
         )
 
-        self.base_folder = "/home/jk/ros2_test/src/ros2_orb_slam3/colmap_output"
-        self.poses_path = os.path.join(self.base_folder, "SLAM_pose", "trajectory.txt")
-        self.image_dir = os.path.join(self.base_folder, "SLAM_images")
-        self.db_path = os.path.join(self.base_folder, "database.db")
-
         self.get_logger().info("COLMAP Pipeline Node ready.")
 
     def callback(self, msg):
         if msg.data:
             self.get_logger().info("Starting COLMAP reconstruction...")
+
+            self.base_folder = msg.data;
+            self.poses_path = os.path.join(self.base_folder, "SLAM_pose", "trajectory.txt")
+            self.image_dir = os.path.join(self.base_folder, "SLAM_images")
+            self.db_path = os.path.join(self.base_folder, "database.db")
+
             try:
                 run_sparse_reconstruction(self.base_folder, self.poses_path, self.image_dir, self.db_path)
                 self.get_logger().info("COLMAP reconstruction complete.")
@@ -138,6 +139,7 @@ class ColmapPipelineNode(Node):
                 msg.data = final_source_path
                 self.gs_pub.publish(msg)
                 self.get_logger().info(f"Published GS source path: {final_source_path}")
+                return
 
             except Exception as e:
                 self.get_logger().error(f"Error in reconstruction: {e}")

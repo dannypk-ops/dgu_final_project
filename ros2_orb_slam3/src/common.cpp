@@ -16,6 +16,22 @@ REQUIREMENTS
 #include <vector>            // ✅ std::vector
 #include <opencv2/core.hpp>  // ✅ cv::Mat (KeyFrame에서 imRGB 등 사용 시 필요)
 
+void printSE3f(const Sophus::SE3f& Twc) {
+    // rotation matrix (3x3)
+    Eigen::Matrix3f R = Twc.rotationMatrix();
+    // translation vector (3x1)
+    Eigen::Vector3f t = Twc.translation();
+
+    // rotation 출력
+    printf("Rotation matrix:\n");
+    for (int i = 0; i < 3; ++i) {
+        printf("[%.6f %.6f %.6f]\n", R(i,0), R(i,1), R(i,2));
+    }
+
+    // translation 출력
+    printf("Translation vector:\n");
+    printf("[%.6f %.6f %.6f]\n", t(0), t(1), t(2));
+}
 
 //* Constructor
 MonocularMode::MonocularMode() :Node("mono_node_cpp")
@@ -35,6 +51,7 @@ MonocularMode::MonocularMode() :Node("mono_node_cpp")
     this->declare_parameter("settings_file_path_arg", "file_path_not_set"); // path to settings file  
     
     //* Watchdog, populate default values
+    currentMode = "SLAM";  // 기본값은 SLAM
     nodeName = "not_set";
     vocFilePath = "file_not_set";
     settingsFilePath = "file_not_set";
@@ -73,6 +90,7 @@ MonocularMode::MonocularMode() :Node("mono_node_cpp")
     pubconfigackName = "/mono_py_driver/exp_settings_ack"; // send an acknowledgement to the python node
     subImgMsgName = "/mono_py_driver/img_msg"; // topic to receive RGB image messages
     subTimestepMsgName = "/mono_py_driver/timestep_msg"; // topic to receive RGB image messages
+    localizationMode = "/mono_py_driver/localization_msg";
 
     //* subscribe to python node to receive settings
     expConfig_subscription_ = this->create_subscription<std_msgs::msg::String>(subexperimentconfigName, 1, std::bind(&MonocularMode::experimentSetting_callback, this, _1));
@@ -88,7 +106,9 @@ MonocularMode::MonocularMode() :Node("mono_node_cpp")
 
     finish_subscription_ = this->create_subscription<std_msgs::msg::String>("/mono_py_driver/finished",10,std::bind(&MonocularMode::finish_callback, this, _1));
 
-    init_colmap_publisher_ = this->create_publisher<std_msgs::msg::Bool>("/mono_py_driver/SLAM_done",10);
+    init_colmap_publisher_ = this->create_publisher<std_msgs::msg::String>("/mono_py_driver/SLAM_done",10);
+
+    localizationMode_subscription_ = this->create_subscription<std_msgs::msg::String>(localizationMode, 10, std::bind(&MonocularMode::LocalizationMode_callback, this, _1));
     
     RCLCPP_INFO(this->get_logger(), "Waiting to finish handshake ......");
     
@@ -191,59 +211,110 @@ void MonocularMode::Img_callback(const sensor_msgs::msg::Image& msg)
     
     //* Perform all ORB-SLAM3 operations in Monocular mode
     //! Pose with respect to the camera coordinate frame not the world coordinate frame
+
     Sophus::SE3f Tcw = pAgent->TrackMonocular(cv_ptr->image, timeStep); 
+    // printf("state : %d\n",pAgent->GetTrackingState());
 
     //* An example of what can be done after the pose w.r.t camera coordinate frame is computed by ORB SLAM3
-    //Sophus::SE3f Twc = Tcw.inverse(); //* Pose with respect to global image coordinate, reserved for future use
-    
+    // if (this->currentMode == "Localization"){
+    //     Sophus::SE3f Twc = Tcw.inverse(); //* Pose with respect to global image coordinate, reserved for future use
+    //     printSE3f(Twc);
+    // }
 }
 
+// void MonocularMode::saving_image_path(const std_msgs::msg::String& msg){
+
+// }
+
 void MonocularMode::finish_callback(const std_msgs::msg::String& msg) {
-    if (msg.data == "done" && !hasPublished) {
+
+    const std::string iter = "iteration" + std::to_string(this->image_processing_time);
+
+    // 2) 필요한 경로들
+    std::string base_dir = this->kRoot + iter;                               // .../iterationN
+    std::string traj_dir = base_dir + "/SLAM_pose";                    // .../iterationN/SLAM_pose
+    std::string traj_file = traj_dir + "/trajectory.txt";              // .../SLAM_pose/trajectory.txt
+    std::string save_dir  = base_dir + "/SLAM_images";                 // .../iterationN/SLAM_images
+
+    if (!rcpputils::fs::exists(base_dir)) {
+        rcpputils::fs::create_directories(base_dir);
+        rcpputils::fs::create_directories(traj_dir);
+        rcpputils::fs::create_directories(save_dir);
+    }
+
+    if (msg.data == "done") {
         RCLCPP_INFO(this->get_logger(), "📩 Received 'done' signal from Python. Publishing trajectory...");
 
-        // std::string traj_file = homeDir + "/trajectory_output/trajectory.txt";
-        std::string traj_file = "/home/jk/ros2_test/src/ros2_orb_slam3/colmap_output/SLAM_pose/trajectory.txt";
-        std::string traj_dir = "/home/jk/ros2_test/src/ros2_orb_slam3/colmap_output/SLAM_pose/";
-        rcpputils::fs::path dir_path(traj_dir);
-
-        if (!rcpputils::fs::exists(dir_path)) {
-            rcpputils::fs::create_directories(dir_path);
-        }
-
-        pAgent->SaveTrajectoryEuRoC(traj_file);
-        hasPublished = true;
+        // SaveTrajectory의 함수로 현재 Kerframe ID가 없는, 새로운 이미지에 대한 pose만을 저장하도록 수정.
+        if (this->image_processing_time == 0)
+            pAgent->SaveTrajectoryEuRoC(traj_file);
+        else
+            pAgent->SaveTrajectoryEuRoC(traj_file, this->keyframe_index);
 
         RCLCPP_INFO(this->get_logger(), "✅ Final trajectory published.");
     }
     
-    std::vector<cv::Mat> images = pAgent->GetAllKeyFrameImages();
+    auto kf_data = pAgent->GetAllKeyFrameData();
 
-    std::string save_dir = "/home/jk/ros2_test/src/ros2_orb_slam3/colmap_output/SLAM_images";
-    rcpputils::fs::path dir_path(save_dir);
+    // keyframe_index는 클래스 멤버: std::vector<std::size_t> keyframe_index;
+    std::unordered_set<std::size_t> seen_ids(this->keyframe_index.begin(),
+                                            this->keyframe_index.end());
 
-    if (!rcpputils::fs::exists(dir_path)) {
-        rcpputils::fs::create_directories(dir_path);
-    }
-
-    for (size_t i = 0; i < images.size(); ++i)
+    int idx = 0;
+    for (const auto& [kf_id, data] : kf_data)           // 모든 KeyFrame 순회
     {
-        const cv::Mat& image = images[i];
-        if (image.empty()) continue;
+        // ── 1) 중복 검사 ──────────────────────────────────────────────
+        if (seen_ids.count(kf_id)) {
+            continue;                                   // 이미 처리한 ID면 건너뜀
+        }
 
+        const cv::Mat& img = data.image;
+        if (img.empty()) continue;
+
+        // ── 2) 파일명 생성 ────────────────────────────────────────────
         std::ostringstream oss;
-        oss << save_dir << "/keyframe_" << std::setw(4) << std::setfill('0') << i << ".png";
-        std::string filename = oss.str();
+        oss << save_dir << "/keyframe_"
+            << std::setw(4) << std::setfill('0') << idx++   // 0000, 0001, …
+            << "_id" << kf_id << ".png";
 
-        if (cv::imwrite(filename, image)) {
-            std::cout << "✅ Saved: " << filename << std::endl;
+        const std::string filename = oss.str();
+
+        // ── 3) 저장 & 인덱스 갱신 ─────────────────────────────────────
+        if (cv::imwrite(filename, img)) {
+            std::cout << "✅ Saved: " << filename << '\n';
+            this->keyframe_index.push_back(kf_id);  // 벡터에도 기록
         } else {
-            std::cerr << "❌ Failed to save: " << filename << std::endl;
+            std::cerr << "❌ Failed to save: " << filename << '\n';
         }
     }
 
     // 콜맵 실행 신호 전달
-    auto slam_done_msg = std_msgs::msg::Bool();
-    slam_done_msg.data = true;
+    std_msgs::msg::String slam_done_msg;
+    slam_done_msg.data = base_dir;
     init_colmap_publisher_->publish(slam_done_msg);
+
+    this->image_processing_time += 1;
+}
+
+void MonocularMode::LocalizationMode_callback(const std_msgs::msg::String& msg) {
+    std::string requestedMode = msg.data;
+
+    if (requestedMode == currentMode) {
+        RCLCPP_INFO(this->get_logger(), "🔄 Already in %s Mode. No action taken.", currentMode.c_str());
+        return;
+    }
+
+    if (requestedMode == "Localization") {
+        RCLCPP_INFO(this->get_logger(), "🟢 New environment input start...");
+        // pAgent->ActivateLocalizationMode();
+        currentMode = "Localization";
+    } 
+    else if (requestedMode == "SLAM") {
+        RCLCPP_INFO(this->get_logger(), "🟢 Switching to SLAM Mode");
+        // pAgent->DeactivateLocalizationMode();
+        currentMode = "SLAM";
+    } 
+    else {
+        RCLCPP_WARN(this->get_logger(), "⚠️ Unknown mode received: %s", requestedMode.c_str());
+    }
 }

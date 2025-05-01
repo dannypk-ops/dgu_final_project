@@ -131,3 +131,34 @@ def safe_state(silent):
     np.random.seed(0)
     torch.manual_seed(0)
     torch.cuda.set_device(torch.device("cuda:0"))
+
+
+
+def parsing_path(path):
+
+    import os
+    from scene.dataset_readers import SceneInfo
+    from scene.colmap_loader import read_extrinsics_binary, read_intrinsics_binary
+    from scene.dataset_readers import readColmapCameras, getNerfppNorm, SceneInfo
+
+    cameras_extrinsic_file = os.path.join(path, "sparse/0", "images.bin")
+    cameras_intrinsic_file = os.path.join(path, "sparse/0", "cameras.bin")
+    cam_extrinsics = read_extrinsics_binary(cameras_extrinsic_file)
+    cam_intrinsics = read_intrinsics_binary(cameras_intrinsic_file)
+
+    cam_infos_unsorted = readColmapCameras(
+    cam_extrinsics=cam_extrinsics, cam_intrinsics=cam_intrinsics, depths_params=None,
+    images_folder=os.path.join(path, "images"), 
+    depths_folder= "", test_cam_names_list=[])
+    cam_infos = sorted(cam_infos_unsorted.copy(), key = lambda x : x.image_name)
+
+    train_cam_infos = [c for c in cam_infos]
+    nerf_normalization = getNerfppNorm(train_cam_infos)
+
+    scene_info = SceneInfo(point_cloud=None,
+                           train_cameras=train_cam_infos,
+                           test_cameras= None,
+                           nerf_normalization=nerf_normalization,
+                           ply_path=None,
+                           is_nerf_synthetic=False)
+    return scene_info

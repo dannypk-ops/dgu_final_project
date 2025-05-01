@@ -1,0 +1,157 @@
+[0.006s] Invoking command in '/home/jk/ros2_test/src/build/ros2_orb_slam3': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jk/ros2_test/src/install/gaussian_splatting_ros:/opt/ros/humble /usr/bin/cmake --build /home/jk/ros2_test/src/build/ros2_orb_slam3 -- -j24 -l24
+[0.040s] [  1%] Built target ros2_orb_slam3__cpp
+[0.043s] [  6%] Built target ros2_orb_slam3__rosidl_generator_c
+[0.046s] [  6%] Built target ament_cmake_python_copy_ros2_orb_slam3
+[0.055s] [ 15%] Built target ros2_orb_slam3__rosidl_typesupport_cpp
+[0.055s] [ 15%] Built target ros2_orb_slam3__rosidl_typesupport_fastrtps_cpp
+[0.055s] [ 20%] Built target ros2_orb_slam3__rosidl_typesupport_introspection_cpp
+[0.057s] [ 25%] Built target ros2_orb_slam3__rosidl_typesupport_c
+[0.057s] [ 30%] Built target ros2_orb_slam3__rosidl_typesupport_introspection_c
+[0.058s] [ 34%] Built target ros2_orb_slam3__rosidl_typesupport_fastrtps_c
+[0.068s] [ 80%] Built target orb_slam3_lib
+[0.071s] [ 80%] Built target ros2_orb_slam3
+[0.081s] [35m[1mConsolidate compiler generated dependencies of target mono_node_cpp[0m
+[0.085s] [ 82%] Built target ros2_orb_slam3__py
+[0.100s] [ 85%] Built target ros2_orb_slam3__rosidl_generator_py
+[0.104s] [ 90%] Built target mono_node_cpp
+[0.114s] [ 93%] Built target ros2_orb_slam3__rosidl_typesupport_introspection_c__pyext
+[0.114s] [ 96%] Built target ros2_orb_slam3__rosidl_typesupport_c__pyext
+[0.114s] [100%] Built target ros2_orb_slam3__rosidl_typesupport_fastrtps_c__pyext
+[0.162s] running egg_info
+[0.162s] writing ros2_orb_slam3.egg-info/PKG-INFO
+[0.162s] writing dependency_links to ros2_orb_slam3.egg-info/dependency_links.txt
+[0.162s] writing top-level names to ros2_orb_slam3.egg-info/top_level.txt
+[0.163s] reading manifest file 'ros2_orb_slam3.egg-info/SOURCES.txt'
+[0.164s] writing manifest file 'ros2_orb_slam3.egg-info/SOURCES.txt'
+[0.179s] [100%] Built target ament_cmake_python_build_ros2_orb_slam3_egg
+[0.187s] Invoked command in '/home/jk/ros2_test/src/build/ros2_orb_slam3' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jk/ros2_test/src/install/gaussian_splatting_ros:/opt/ros/humble /usr/bin/cmake --build /home/jk/ros2_test/src/build/ros2_orb_slam3 -- -j24 -l24
+[0.193s] Invoking command in '/home/jk/ros2_test/src/build/ros2_orb_slam3': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jk/ros2_test/src/install/gaussian_splatting_ros:/opt/ros/humble /usr/bin/cmake --install /home/jk/ros2_test/src/build/ros2_orb_slam3
+[0.198s] -- Install configuration: ""
+[0.198s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/lib/libDBoW2.so
+[0.198s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/lib/libg2o.so
+[0.198s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include
+[0.198s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3
+[0.198s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/common.hpp
+[0.198s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/lib/ros2_orb_slam3/mono_node_cpp
+[0.198s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/lib/liborb_slam3_lib.so.
+[0.198s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/lib/liborb_slam3_lib.so
+[0.198s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/lib/ros2_orb_slam3/mono_driver_node.py
+[0.198s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/lib/ros2_orb_slam3/colmap_excutor.py
+[0.198s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ament_index/resource_index/rosidl_interfaces/ros2_orb_slam3
+[0.198s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3
+[0.198s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg
+[0.198s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail
+[0.198s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail/stereoimage__functions.c
+[0.198s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail/stereoimage__functions.h
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail/stereoimage__type_support.h
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail/stereoimage__struct.h
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/rosidl_generator_c__visibility_control.h
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/stereoimage.h
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/environment/library_path.sh
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/environment/library_path.dsv
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/lib/libros2_orb_slam3__rosidl_generator_c.so
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail/stereoimage__rosidl_typesupport_fastrtps_c.h
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/lib/libros2_orb_slam3__rosidl_typesupport_fastrtps_c.so
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail/stereoimage__type_support.c
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail/stereoimage__rosidl_typesupport_introspection_c.h
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/lib/libros2_orb_slam3__rosidl_typesupport_introspection_c.so
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/lib/libros2_orb_slam3__rosidl_typesupport_c.so
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg
+[0.199s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/rosidl_generator_cpp__visibility_control.hpp
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail/stereoimage__struct.hpp
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail/stereoimage__traits.hpp
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail/stereoimage__type_support.hpp
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail/stereoimage__builder.hpp
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/stereoimage.hpp
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail/dds_fastrtps
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail/stereoimage__rosidl_typesupport_fastrtps_cpp.hpp
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/lib/libros2_orb_slam3__rosidl_typesupport_fastrtps_cpp.so
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail/stereoimage__rosidl_typesupport_introspection_cpp.hpp
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/include/ros2_orb_slam3/ros2_orb_slam3/msg/detail/stereoimage__type_support.cpp
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/lib/libros2_orb_slam3__rosidl_typesupport_introspection_cpp.so
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/lib/libros2_orb_slam3__rosidl_typesupport_cpp.so
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/environment/pythonpath.sh
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/environment/pythonpath.dsv
+[0.200s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3-1.5.0-py3.10.egg-info
+[0.200s] -- Installing: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3-1.5.0-py3.10.egg-info/top_level.txt
+[0.200s] -- Installing: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3-1.5.0-py3.10.egg-info/PKG-INFO
+[0.201s] -- Installing: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3-1.5.0-py3.10.egg-info/dependency_links.txt
+[0.201s] -- Installing: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3-1.5.0-py3.10.egg-info/SOURCES.txt
+[0.201s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3
+[0.201s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3/__init__.py
+[0.201s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3/libros2_orb_slam3__rosidl_generator_py.so
+[0.201s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3/_ros2_orb_slam3_s.ep.rosidl_typesupport_fastrtps_c.c
+[0.201s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3/ros2_orb_slam3_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[0.201s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3/_ros2_orb_slam3_s.ep.rosidl_typesupport_introspection_c.c
+[0.201s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3/_ros2_orb_slam3_s.ep.rosidl_typesupport_c.c
+[0.201s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3/ros2_orb_slam3_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[0.201s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3/msg
+[0.201s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3/msg/__init__.py
+[0.201s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3/msg/_stereoimage.py
+[0.201s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3/msg/_stereoimage_s.c
+[0.201s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3/ros2_orb_slam3_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[0.217s] Listing '/home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3'...
+[0.217s] Listing '/home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3/msg'...
+[0.219s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3/ros2_orb_slam3_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[0.220s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3/ros2_orb_slam3_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[0.220s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/local/lib/python3.10/dist-packages/ros2_orb_slam3/ros2_orb_slam3_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[0.220s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/lib/libros2_orb_slam3__rosidl_generator_py.so
+[0.220s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/msg/Stereoimage.idl
+[0.220s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/msg/Stereoimage.msg
+[0.220s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ament_index/resource_index/package_run_dependencies/ros2_orb_slam3
+[0.220s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ament_index/resource_index/parent_prefix_path/ros2_orb_slam3
+[0.220s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/environment/ament_prefix_path.sh
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/environment/ament_prefix_path.dsv
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/environment/path.sh
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/environment/path.dsv
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/local_setup.bash
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/local_setup.sh
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/local_setup.zsh
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/local_setup.dsv
+[0.221s] -- Installing: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/package.dsv
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ament_index/resource_index/packages/ros2_orb_slam3
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/export_ros2_orb_slam3__rosidl_generator_cExport.cmake
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/export_ros2_orb_slam3__rosidl_generator_cExport-noconfig.cmake
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/export_ros2_orb_slam3__rosidl_typesupport_fastrtps_cExport.cmake
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/export_ros2_orb_slam3__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/ros2_orb_slam3__rosidl_typesupport_introspection_cExport.cmake
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/ros2_orb_slam3__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/ros2_orb_slam3__rosidl_typesupport_cExport.cmake
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/ros2_orb_slam3__rosidl_typesupport_cExport-noconfig.cmake
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/export_ros2_orb_slam3__rosidl_generator_cppExport.cmake
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/export_ros2_orb_slam3__rosidl_typesupport_fastrtps_cppExport.cmake
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/export_ros2_orb_slam3__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/ros2_orb_slam3__rosidl_typesupport_introspection_cppExport.cmake
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/ros2_orb_slam3__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/ros2_orb_slam3__rosidl_typesupport_cppExport.cmake
+[0.221s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/ros2_orb_slam3__rosidl_typesupport_cppExport-noconfig.cmake
+[0.222s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/export_ros2_orb_slam3__rosidl_generator_pyExport.cmake
+[0.222s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/export_ros2_orb_slam3__rosidl_generator_pyExport-noconfig.cmake
+[0.222s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/ament_cmake_export_include_directories-extras.cmake
+[0.222s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/ament_cmake_export_dependencies-extras.cmake
+[0.222s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/rosidl_cmake-extras.cmake
+[0.222s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/ament_cmake_export_libraries-extras.cmake
+[0.222s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/ament_cmake_export_targets-extras.cmake
+[0.222s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[0.222s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[0.222s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/ros2_orb_slam3Config.cmake
+[0.222s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/cmake/ros2_orb_slam3Config-version.cmake
+[0.222s] -- Up-to-date: /home/jk/ros2_test/src/install/ros2_orb_slam3/share/ros2_orb_slam3/package.xml
+[0.223s] Invoked command in '/home/jk/ros2_test/src/build/ros2_orb_slam3' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jk/ros2_test/src/install/gaussian_splatting_ros:/opt/ros/humble /usr/bin/cmake --install /home/jk/ros2_test/src/build/ros2_orb_slam3

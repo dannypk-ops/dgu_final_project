@@ -1,0 +1,12 @@
+running egg_info
+writing ../../../build/fused_ssim/fused_ssim.egg-info/PKG-INFO
+writing dependency_links to ../../../build/fused_ssim/fused_ssim.egg-info/dependency_links.txt
+writing top-level names to ../../../build/fused_ssim/fused_ssim.egg-info/top_level.txt
+reading manifest file '../../../build/fused_ssim/fused_ssim.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../../../build/fused_ssim/fused_ssim.egg-info/SOURCES.txt'
+running build
+running build_py
+running build_ext
+building 'fused_ssim_cuda' extension
+ninja: build stopped: interrupted by user.

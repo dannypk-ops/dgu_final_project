@@ -1,0 +1,3 @@
+Invoking command in '/home/jk/ros2_test/src/build/DiffRast': /usr/bin/cmake /home/jk/ros2_test/src/gaussian-splatting/submodules/diff-gaussian-rasterization -DCMAKE_INSTALL_PREFIX=/home/jk/ros2_test/src/install/DiffRast
+Invoked command in '/home/jk/ros2_test/src/build/DiffRast' returned '0': /usr/bin/cmake /home/jk/ros2_test/src/gaussian-splatting/submodules/diff-gaussian-rasterization -DCMAKE_INSTALL_PREFIX=/home/jk/ros2_test/src/install/DiffRast
+Invoking command in '/home/jk/ros2_test/src/build/DiffRast': /usr/bin/cmake --build /home/jk/ros2_test/src/build/DiffRast -- -j24 -l24

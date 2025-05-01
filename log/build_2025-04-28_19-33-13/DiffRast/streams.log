@@ -1,0 +1,18 @@
+[0.016s] Invoking command in '/home/jk/ros2_test/src/build/DiffRast': /usr/bin/cmake /home/jk/ros2_test/src/gaussian-splatting/submodules/diff-gaussian-rasterization -DCMAKE_INSTALL_PREFIX=/home/jk/ros2_test/src/install/DiffRast
+[1.115s] -- The CUDA compiler identification is NVIDIA 11.8.89
+[1.115s] -- The CXX compiler identification is GNU 11.4.0
+[1.115s] -- Detecting CUDA compiler ABI info
+[1.116s] -- Detecting CUDA compiler ABI info - done
+[1.128s] -- Check for working CUDA compiler: /usr/local/cuda-11.8/bin/nvcc - skipped
+[1.128s] -- Detecting CUDA compile features
+[1.129s] -- Detecting CUDA compile features - done
+[1.131s] -- Detecting CXX compiler ABI info
+[1.179s] -- Detecting CXX compiler ABI info - done
+[1.182s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.182s] -- Detecting CXX compile features
+[1.183s] -- Detecting CXX compile features - done
+[1.183s] -- Configuring done
+[1.185s] -- Generating done
+[1.185s] -- Build files have been written to: /home/jk/ros2_test/src/build/DiffRast
+[2.297s] Invoked command in '/home/jk/ros2_test/src/build/DiffRast' returned '0': /usr/bin/cmake /home/jk/ros2_test/src/gaussian-splatting/submodules/diff-gaussian-rasterization -DCMAKE_INSTALL_PREFIX=/home/jk/ros2_test/src/install/DiffRast
+[2.298s] Invoking command in '/home/jk/ros2_test/src/build/DiffRast': /usr/bin/cmake --build /home/jk/ros2_test/src/build/DiffRast -- -j24 -l24

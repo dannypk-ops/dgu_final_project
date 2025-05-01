@@ -708,6 +708,71 @@ void System::SaveTrajectoryEuRoC(const string &filename)
     f.close();
     cout << "✅ KeyFrame-only trajectory saved to " << filename << endl;
 }
+
+void System::SaveTrajectoryEuRoC(const string &filename, std::vector<int> keyframe_index)
+{
+    cout << endl << "🔸 Saving *KeyFrame-only* trajectory to " << filename << " ..." << endl;
+
+    vector<Map*> vpMaps = mpAtlas->GetAllMaps();
+    int numMaxKFs = 0;
+    Map* pBiggerMap = nullptr;
+    for(Map* pMap : vpMaps)
+    {
+        if(pMap->GetAllKeyFrames().size() > numMaxKFs)
+        {
+            numMaxKFs = pMap->GetAllKeyFrames().size();
+            pBiggerMap = pMap;
+        }
+    }
+
+    if (!pBiggerMap || pBiggerMap->GetAllKeyFrames().empty()) {
+        cerr << "❌ No valid map or keyframes found." << endl;
+        return;
+    }
+
+    vector<KeyFrame*> vpKFs = pBiggerMap->GetAllKeyFrames();
+    sort(vpKFs.begin(), vpKFs.end(), KeyFrame::lId);
+
+    // 첫 KeyFrame을 원점으로 이동
+    Sophus::SE3f Twb;
+    if (mSensor == IMU_MONOCULAR || mSensor == IMU_STEREO || mSensor == IMU_RGBD)
+        Twb = vpKFs[0]->GetImuPose();
+    else
+        Twb = vpKFs[0]->GetPoseInverse();
+
+    ofstream f;
+    f.open(filename.c_str());
+    f << fixed;
+
+    std::unordered_set<std::size_t> seen_ids(keyframe_index.begin(),
+                                            keyframe_index.end());
+    for (auto* pKF : vpKFs) {
+        if (!pKF || pKF->isBad() || pKF->imRGB.empty()) continue;
+
+        if (seen_ids.count(pKF->mnId)) continue;
+
+        Sophus::SE3f Twc;
+        if (mSensor == IMU_MONOCULAR || mSensor == IMU_STEREO || mSensor == IMU_RGBD) {
+            Twc = pKF->GetImuPose() * Twb;
+        } else {
+            Twc = pKF->GetPose() * Twb;
+        }
+
+        Eigen::Quaternionf q = Twc.unit_quaternion();
+        Eigen::Vector3f t = Twc.translation();
+        double timestamp = pKF->mTimeStamp;
+
+        f << setprecision(6) << 1e9 * timestamp << " "
+          << setprecision(9)
+          << t(0) << " " << t(1) << " " << t(2) << " "
+          << q.x() << " " << q.y() << " " << q.z() << " " << q.w() << endl;
+    }
+
+    f.close();
+    cout << "✅ KeyFrame-only trajectory saved to " << filename << endl;
+}
+
+
 // void System::SaveTrajectoryEuRoC(const string &filename)
 // {
 
@@ -1681,26 +1746,69 @@ bool System::SaveMap(const string &filename)
     return false;
 }
 
-std::vector<cv::Mat> System::GetAllKeyFrameImages()
+std::map<std::size_t, cv::Mat> System::GetAllKeyFrameImages()
 {
-    std::vector<cv::Mat> images;
-    vector<KeyFrame*> vpKFs = mpAtlas->GetAllKeyFrames();
-    std::sort(vpKFs.begin(), vpKFs.end(), KeyFrame::lId);
+    std::map<std::size_t, cv::Mat> images;          // mnId → 이미지
+    std::vector<KeyFrame*> vpKFs = mpAtlas->GetAllKeyFrames();
+    std::sort(vpKFs.begin(), vpKFs.end(), KeyFrame::lId);     // ID 순 정렬(선택)
 
-    for (auto* pKF : vpKFs)
+    for (KeyFrame* pKF : vpKFs)
     {
-        if (!pKF || pKF->isBad()) continue;
-        const cv::Mat& image = pKF->imRGB;
-        if (image.empty()) continue;
-        {
-            std::unique_lock<std::mutex> lock(pKF->mMutexImage);
-            if (!pKF->imRGB.empty())
-                images.push_back(pKF->imRGB.clone());
-        }       
-    }
+        if (!pKF || pKF->isBad())           continue;         // 무효 KF 건너뜀
 
+        std::unique_lock<std::mutex> lock(pKF->mMutexImage);  // 이미지 보호
+        if (!pKF->imRGB.empty())
+            images.emplace(pKF->mnId, pKF->imRGB.clone());    // deep copy 저장
+    }
     return images;
 }
 
-} //namespace ORB_SLAM
 
+std::map<std::size_t, KFData> System::GetAllKeyFrameData()
+{
+    // std::vector<KeyFrame*> vpKFs = mpAtlas->GetAllKeyFrames();
+    vector<Map*> vpMaps = mpAtlas->GetAllMaps();
+    int numMaxKFs = 0;
+    Map* pBiggerMap = nullptr;
+    for(Map* pMap : vpMaps)
+    {
+        if(pMap->GetAllKeyFrames().size() > numMaxKFs)
+        {
+            numMaxKFs = pMap->GetAllKeyFrames().size();
+            pBiggerMap = pMap;
+        }
+    }
+
+    vector<KeyFrame*> vpKFs = pBiggerMap->GetAllKeyFrames();
+    
+    std::sort(vpKFs.begin(), vpKFs.end(), KeyFrame::lId);   // ID 순(선택)
+
+    std::map<std::size_t, KFData> kf_map;         // mnId → KFData
+
+    for (KeyFrame* pKF : vpKFs)
+    {
+        if (!pKF || pKF->isBad())
+            continue;
+
+        /* 1. 포즈 취득 ---------------------------------------------------- */
+        Sophus::SE3f Twb;
+        if (mSensor == IMU_MONOCULAR || mSensor == IMU_STEREO || mSensor == IMU_RGBD)
+            Twb = pKF->GetImuPose();       // IMU 사용 시: body/world
+        else
+            Twb = pKF->GetPoseInverse();   // 카메라 기준 → 월드 기준
+
+        /* 2. 이미지 취득 --------------------------------------------------- */
+        cv::Mat img_clone;
+        {
+            std::unique_lock<std::mutex> lock(pKF->mMutexImage);
+            if (!pKF->imRGB.empty())
+                img_clone = pKF->imRGB.clone();   // deep copy
+        }
+
+        /* 3. map 저장 ------------------------------------------------------ */
+        kf_map.emplace(pKF->mnId, KFData{Twb, img_clone});
+    }
+    return kf_map;
+}
+
+} //namespace ORB_SLAM

@@ -63,6 +63,7 @@ class MonocularMode : public rclcpp::Node
     std::string experimentConfig = ""; // String to receive settings sent by the python driver
     double timeStep; // Timestep data received from the python node
     std::string receivedConfig = "";
+    int image_processing_time = 0;
 
     //* Class constructor
     MonocularMode(); // Constructor 
@@ -85,6 +86,13 @@ class MonocularMode : public rclcpp::Node
         std::string pubconfigackName = ""; // Publisher topic name
         std::string subImgMsgName = ""; // Topic to subscribe to receive RGB images from a python node
         std::string subTimestepMsgName = ""; // Topic to subscribe to receive the timestep related to the 
+        std::string localizationMode = "";   // Localization 모드를 시작하기 위한 msg
+        
+        // 인덱스 관리 
+        std::vector<int> keyframe_index;  
+
+        // source path
+        std::string kRoot = "/home/jk/ros2_test/src/ros2_orb_slam3/colmap_output/";
 
         //* Definitions of publisher and subscribers
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr configAck_publisher_;
@@ -92,13 +100,16 @@ class MonocularMode : public rclcpp::Node
         rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr subImgMsg_subscription_;
         rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr subTimestepMsg_subscription_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr finish_subscription_;
-        rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr init_colmap_publisher_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr init_colmap_publisher_;
+        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr localizationMode_subscription_;
+
 
         //* ORB_SLAM3 related variables
         ORB_SLAM3::System* pAgent; // pointer to a ORB SLAM3 object
         ORB_SLAM3::System::eSensor sensorType;
         bool enablePangolinWindow = false; // Shows Pangolin window output
         bool enableOpenCVWindow = false; // Shows OpenCV window output
+        std::string currentMode;
 
         //* ROS callbacks
         void experimentSetting_callback(const std_msgs::msg::String& msg); // Callback to process settings sent over by Python node
@@ -108,7 +119,7 @@ class MonocularMode : public rclcpp::Node
         //* Helper functions
         // ORB_SLAM3::eigenMatXf convertToEigenMat(const std_msgs::msg::Float32MultiArray& msg); // Helper method, converts semantic matrix eigenMatXf, a Eigen 4x4 float matrix
         void initializeVSLAM(std::string& configString); //* Method to bind an initialized VSLAM framework to this node
-
+        void LocalizationMode_callback(const std_msgs::msg::String& msg);
         void finish_callback(const std_msgs::msg::String& msg);
 };
 

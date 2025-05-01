@@ -1,0 +1,1 @@
+Invoking command in '/home/jk/ros2_test/src/build/DiffRast': /usr/bin/cmake --build /home/jk/ros2_test/src/build/DiffRast -- -j24 -l24

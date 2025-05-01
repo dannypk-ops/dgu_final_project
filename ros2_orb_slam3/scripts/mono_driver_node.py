@@ -63,6 +63,7 @@ class MonoDriver(Node):
         #* Parse values sent by command line
         self.settings_name = str(self.get_parameter('settings_name').value) 
         self.image_seq = str(self.get_parameter('image_seq').value)
+        self.image_seq_localization = "sample_localization"
 
         # DEBUG
         print(f"-------------- Received parameters --------------------------\n")
@@ -74,7 +75,7 @@ class MonoDriver(Node):
         self.home_dir = str(Path.home()) + "/ros2_test/src/ros2_orb_slam3" #! Change this to match path to your workspace
         self.parent_dir = "TEST_DATASET" #! Change or provide path to the parent directory where data for all image sequences are stored
         self.image_sequence_dir = self.home_dir + "/" + self.parent_dir + "/" + self.image_seq # Full path to the image sequence folder
-
+        self.image_sequence_dir_localization = self.home_dir + "/" + self.parent_dir + "/" + self.image_seq_localization
         print(f"self.image_sequence_dir: {self.image_sequence_dir}\n")
 
         # Global variables
@@ -88,6 +89,7 @@ class MonoDriver(Node):
 
         # Read images from the chosen dataset, order them in ascending order and prepare timestep data as well
         self.imgz_seqz_dir, self.imgz_seqz, self.time_seqz = self.get_image_dataset_asl(self.image_sequence_dir, "mav0") 
+        self.imgz_seqz_dir_local, self.imgz_seqz_local, self.time_seqz_local = self.get_image_dataset_asl(self.image_sequence_dir_localization, "mav0")
 
         print(self.image_seq_dir)
         print(len(self.imgz_seqz))
@@ -97,6 +99,7 @@ class MonoDriver(Node):
         self.sub_exp_ack_name = "/mono_py_driver/exp_settings_ack"
         self.pub_img_to_agent_name = "/mono_py_driver/img_msg"
         self.pub_timestep_to_agent_name = "/mono_py_driver/timestep_msg"
+        self.localization_mode = "/mono_py_driver/localization_msg"
         self.send_config = True # Set False once handshake is completed with the cpp node
         
         
@@ -120,6 +123,9 @@ class MonoDriver(Node):
         self.publish_img_msg_ = self.create_publisher(Image, self.pub_img_to_agent_name, 1)
         
         self.publish_timestep_msg_ = self.create_publisher(Float64, self.pub_timestep_to_agent_name, 1)
+
+        self.publish_localization_mode_ = self.create_publisher(String, self.localization_mode, 1)
+
 
 
         # Initialize work variables for main logic
@@ -186,7 +192,7 @@ class MonoDriver(Node):
     # ****************************************************************************************
     
     # ****************************************************************************************
-    def run_py_node(self, idx, imgz_name):
+    def run_py_node(self, idx, imgz_name, mode = "SLAM"):
         """
             Master function that sends the RGB image message to the CPP node
         """
@@ -195,7 +201,11 @@ class MonoDriver(Node):
         img_msg = None # sensor_msgs image object
 
         # Path to this image
-        img_look_up_path = self.imgz_seqz_dir  + imgz_name
+        if mode == "SLAM":
+            img_look_up_path = self.imgz_seqz_dir  + imgz_name
+        else:
+            img_look_up_path = self.imgz_seqz_dir_local + imgz_name
+
         timestep = float(imgz_name.split(".")[0]) # Kept if you use a custom message interface to also pass timestep value
         self.frame_id = self.frame_id + 1  
         #print(img_look_up_path)
@@ -213,7 +223,20 @@ class MonoDriver(Node):
         except CvBridgeError as e:
             print(e)
     # ****************************************************************************************
-        
+
+    def send_localization_mode(self, mode="Localization"):
+        """
+        Sends mode switch command to CPP node.
+        mode: "Localization" or "SLAM"
+        """
+        if mode not in ["Localization", "SLAM"]:
+            print(f"❌ Invalid mode: {mode}")
+            return
+
+        msg = String()
+        msg.data = mode
+        self.publish_localization_mode_.publish(msg)
+        print(f"📤 Sent mode switch command: {mode}")
 
 # main function
 def main(args = None):
@@ -246,12 +269,50 @@ def main(args = None):
         
         except KeyboardInterrupt:
             break
-
+    
     finish_msg = String()
     finish_msg.data = "done"
     n.publish_finish_.publish(finish_msg)
     print("✅ All images sent. Published 'done' signal to /mono_py_driver/finished")
 
+    # finish_msg = String()
+    # finish_msg.data = "done"
+    # n.publish_finish_.publish(finish_msg)
+    # print("✅ All images sent. Published 'done' signal to /mono_py_driver/finished")
+    
+    # Test
+    # 1. Localization Mode ON
+    # 2. 새로운 Image를 publish,  pose를 추출
+    # 3. pose를 이용하여 colmap을 수행
+    # 4. 생성된 point cloud를 반환.
+
+    time.sleep(300)
+
+    # 1. Localization Mode ON
+    print("-----Sample new data with same environment-----")
+    n.send_localization_mode("Localization")
+
+    # 2. 새로운 Image를 publish
+    n.frame_id = 0
+    for idx, imgz_name in enumerate(n.imgz_seqz_local[0:n.end_frame]):
+        try:
+            rclpy.spin_once(n) # Blocking we need a non blocking take care of callbacks
+            n.run_py_node(idx, imgz_name, mode="Localization")
+            rate.sleep()
+
+            # DEBUG, if you want to halt sending images after a certain Frame is reached
+            if (n.frame_id>n.frame_stop and n.frame_stop != -1):
+                print(f"BREAK!")
+                break
+        
+        except KeyboardInterrupt:
+            break
+
+    finish_msg = String()
+    finish_msg.data = "done"
+    n.publish_finish_.publish(finish_msg)
+    print("✅ New images sent. Published 'done' signal to /mono_py_driver/finished")
+    
     # Cleanup
     cv2.destroyAllWindows() # Close all image windows
     n.destroy_node() # Release all resource related to this node

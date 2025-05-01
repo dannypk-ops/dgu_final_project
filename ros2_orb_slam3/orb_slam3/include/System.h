@@ -27,6 +27,7 @@
 #include<string>
 #include<thread>
 #include<opencv2/core/core.hpp>
+#include <map>
 
 #include "Tracking.h"
 #include "FrameDrawer.h"
@@ -40,9 +41,14 @@
 #include "ImuTypes.h"
 #include "Settings.h"
 
+struct KFData            // [포즈, 이미지] 한 번에 보관
+{
+    Sophus::SE3f pose;   // Twb (SE3f)
+    cv::Mat      image;  // RGB 이미지
+};
+
 namespace ORB_SLAM3
 {
-
 class Verbose
 {
 public:
@@ -100,6 +106,7 @@ public:
     };
 
 public:
+
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
     
     // Initialize the SLAM system. It launches the Local Mapping, Loop Closing and Viewer threads.
@@ -161,6 +168,8 @@ public:
     void SaveTrajectoryEuRoC(const string &filename, Map* pMap);
     void SaveKeyFrameTrajectoryEuRoC(const string &filename, Map* pMap);
 
+    void SaveTrajectoryEuRoC(const string &filename, std::vector<int> keyframe_index);
+    
     // Save data used for initialization debug
     void SaveDebugData(const int &iniIdx);
 
@@ -190,7 +199,8 @@ public:
     bool isImuPreintegrated();
 
     // custom
-    std::vector<cv::Mat> GetAllKeyFrameImages();
+    std::map<std::size_t, cv::Mat> GetAllKeyFrameImages();
+    std::map<std::size_t, KFData> GetAllKeyFrameData();
 
     // For debugging
     double GetTimeFromIMUInit();

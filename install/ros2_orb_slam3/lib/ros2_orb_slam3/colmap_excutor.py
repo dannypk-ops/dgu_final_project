@@ -138,6 +138,7 @@ class ColmapPipelineNode(Node):
                 msg.data = final_source_path
                 self.gs_pub.publish(msg)
                 self.get_logger().info(f"Published GS source path: {final_source_path}")
+                return
 
             except Exception as e:
                 self.get_logger().error(f"Error in reconstruction: {e}")

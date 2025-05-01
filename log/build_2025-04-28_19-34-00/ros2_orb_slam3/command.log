@@ -1,0 +1,1 @@
+Invoking command in '/home/jk/ros2_test/src/build/ros2_orb_slam3': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/jk/ros2_test/src/build/ros2_orb_slam3 -- -j24 -l24

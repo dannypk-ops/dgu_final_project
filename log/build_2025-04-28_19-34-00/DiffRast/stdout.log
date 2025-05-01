@@ -1,0 +1,5 @@
+[ 25%] [32mBuilding CUDA object CMakeFiles/CudaRasterizer.dir/cuda_rasterizer/backward.cu.o[0m
+[ 50%] [32mBuilding CUDA object CMakeFiles/CudaRasterizer.dir/cuda_rasterizer/rasterizer_impl.cu.o[0m
+[ 75%] [32mBuilding CUDA object CMakeFiles/CudaRasterizer.dir/cuda_rasterizer/forward.cu.o[0m
+[100%] [32m[1mLinking CUDA static library libCudaRasterizer.a[0m
+[100%] Built target CudaRasterizer

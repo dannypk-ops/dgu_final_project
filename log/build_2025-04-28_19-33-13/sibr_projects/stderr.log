@@ -1,0 +1,48 @@
+[0mNote you can provide default program options for Visual Studio target properties by either setting a value for the cmake cached variable 'SIBR_PROGRAMARGS' or by setting a new environment variable 'SIBR_PROGRAMARGS'[0m
+[0mActivating EGL support for headless GLFW/GLEW[0m
+[0mThere is no provided GLEW library for your compiler, relying on find_package to find it[0m
+[0mThere is no provided ASSIMP library for your compiler, relying on find_package to find it[0m
+[0mNO ASSIMP DIR ASSIMP_DIR[0m
+[0mSETTING ASSIMP DIR ASSIMP_DIR[0m
+[0mASSIMP DIR ASSIMP_DIR[0m
+[33mCMake Warning at cmake/linux/dependencies.cmake:127 (find_package):
+  By not providing "Findembree.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "embree", but
+  CMake did not find one.
+
+  Could not find a package configuration file provided by "embree" (requested
+  version 3.0) with any of the following names:
+
+    embreeConfig.cmake
+    embree-config.cmake
+
+  Add the installation prefix of "embree" to CMAKE_PREFIX_PATH or set
+  "embree_DIR" to a directory containing one of the above files.  If "embree"
+  provides a separate development package or SDK, be sure it has been
+  installed.
+Call Stack (most recent call first):
+  cmake/linux/include_once.cmake:20 (include)
+  src/CMakeLists.txt:46 (include_once)
+
+[0m
+[0mThere is no provided OpenCV library for your compiler, relying on find_package to find it[0m
+[31mCMake Error at cmake/linux/dependencies.cmake:284 (find_package):
+  By not providing "Findglfw3.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "glfw3", but
+  CMake did not find one.
+
+  Could not find a package configuration file provided by "glfw3" with any of
+  the following names:
+
+    glfw3Config.cmake
+    glfw3-config.cmake
+
+  Add the installation prefix of "glfw3" to CMAKE_PREFIX_PATH or set
+  "glfw3_DIR" to a directory containing one of the above files.  If "glfw3"
+  provides a separate development package or SDK, be sure it has been
+  installed.
+Call Stack (most recent call first):
+  cmake/linux/include_once.cmake:20 (include)
+  src/CMakeLists.txt:46 (include_once)
+
+[0m

@@ -1,0 +1,106 @@
+[1.108s] Invoking command in '/home/jk/ros2_test/src/build/sibr_projects': /usr/bin/cmake /home/jk/ros2_test/src/gaussian-splatting/SIBR_viewers -DCMAKE_INSTALL_PREFIX=/home/jk/ros2_test/src/install/sibr_projects
+[1.154s] -- The C compiler identification is GNU 11.4.0
+[1.186s] -- The CXX compiler identification is GNU 11.4.0
+[1.191s] -- Detecting C compiler ABI info
+[1.234s] -- Detecting C compiler ABI info - done
+[1.237s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.237s] -- Detecting C compile features
+[1.238s] -- Detecting C compile features - done
+[1.239s] -- Detecting CXX compiler ABI info
+[1.288s] -- Detecting CXX compiler ABI info - done
+[1.292s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.292s] -- Detecting CXX compile features
+[1.292s] -- Detecting CXX compile features - done
+[1.295s] -- Found Git: /usr/bin/git (found version "2.34.1") 
+[1.295s] -- Git found: /usr/bin/git
+[1.303s] -- SIBR version :
+[1.303s]  BRANCH 
+[1.303s]  COMMIT_HASH 
+[1.304s]  TAG 
+[1.304s]  VERSION -
+[1.305s] -- Install path set to /home/jk/ros2_test/src/gaussian-splatting/SIBR_viewers/install.
+[1.305s] [0mNote you can provide default program options for Visual Studio target properties by either setting a value for the cmake cached variable 'SIBR_PROGRAMARGS' or by setting a new environment variable 'SIBR_PROGRAMARGS'[0m
+[1.305s] -- 
+[1.305s] 
+[1.305s] ****************** Handling core dependencies ******************
+[1.313s] -- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so   
+[1.316s] -- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") 
+[1.351s] -- Performing Test HAVE_EGL
+[1.409s] -- Performing Test HAVE_EGL - Success
+[1.410s] [0mActivating EGL support for headless GLFW/GLEW[0m
+[1.410s] [0mThere is no provided GLEW library for your compiler, relying on find_package to find it[0m
+[1.419s] -- FindGLEW: did not find GLEW CMake config file. Searching for libraries.
+[1.419s] -- FindGLEW: GLEW_USE_STATIC_LIBS is undefined. Treated as FALSE.
+[1.419s] -- FindGLEW: GLEW_INCLUDE_DIR: /usr/include
+[1.419s] -- FindGLEW: GLEW_INCLUDE_DIRS: /usr/include
+[1.419s] -- FindGLEW: CMAKE_FIND_LIBRARY_SUFFIXES for SHARED: .so;.a
+[1.423s] -- FindGLEW: CMAKE_FIND_LIBRARY_SUFFIXES for STATIC: .so
+[1.425s] -- FindGLEW: GLEW_SHARED_LIBRARY_RELEASE: /usr/lib/x86_64-linux-gnu/libGLEW.so
+[1.425s] -- FindGLEW: GLEW_STATIC_LIBRARY_RELEASE: /usr/lib/x86_64-linux-gnu/libGLEW.a
+[1.425s] -- FindGLEW: GLEW_SHARED_LIBRARY_DEBUG: GLEW_SHARED_LIBRARY_DEBUG-NOTFOUND
+[1.425s] -- FindGLEW: GLEW_STATIC_LIBRARY_DEBUG: GLEW_STATIC_LIBRARY_DEBUG-NOTFOUND
+[1.425s] -- FindGLEW: GLEW_SHARED_LIBRARY: /usr/lib/x86_64-linux-gnu/libGLEW.so
+[1.425s] -- FindGLEW: GLEW_STATIC_LIBRARY: /usr/lib/x86_64-linux-gnu/libGLEW.a
+[1.425s] -- FindGLEW: GLEW_LIBRARIES: /usr/lib/x86_64-linux-gnu/libGLEW.so
+[1.445s] -- FindGLEW: GLEW_VERSION_MAJOR: 2
+[1.445s] -- FindGLEW: GLEW_VERSION_MINOR: 2
+[1.445s] -- FindGLEW: GLEW_VERSION_MICRO: 0
+[1.445s] -- FindGLEW: GLEW_VERSION: 2.2.0
+[1.445s] -- Found GLEW: /usr/include (found version "2.2.0") 
+[1.445s] -- FindGLEW: Creating GLEW::glew imported target.
+[1.445s] -- FindGLEW: Creating GLEW::GLEW imported target.
+[1.445s] [0mThere is no provided ASSIMP library for your compiler, relying on find_package to find it[0m
+[1.446s] [0mNO ASSIMP DIR ASSIMP_DIR[0m
+[1.446s] [0mSETTING ASSIMP DIR ASSIMP_DIR[0m
+[1.446s] [0mASSIMP DIR ASSIMP_DIR[0m
+[1.447s] -- Found ASSIMP: /usr/include  
+[1.451s] -- Found FFMPEG: /usr/include/x86_64-linux-gnu  
+[1.459s] [33mCMake Warning at cmake/linux/dependencies.cmake:127 (find_package):
+[1.459s]   By not providing "Findembree.cmake" in CMAKE_MODULE_PATH this project has
+[1.459s]   asked CMake to find a package configuration file provided by "embree", but
+[1.459s]   CMake did not find one.
+[1.459s] 
+[1.460s]   Could not find a package configuration file provided by "embree" (requested
+[1.460s]   version 3.0) with any of the following names:
+[1.460s] 
+[1.460s]     embreeConfig.cmake
+[1.460s]     embree-config.cmake
+[1.460s] 
+[1.460s]   Add the installation prefix of "embree" to CMAKE_PREFIX_PATH or set
+[1.460s]   "embree_DIR" to a directory containing one of the above files.  If "embree"
+[1.460s]   provides a separate development package or SDK, be sure it has been
+[1.460s]   installed.
+[1.460s] Call Stack (most recent call first):
+[1.460s]   cmake/linux/include_once.cmake:20 (include)
+[1.460s]   src/CMakeLists.txt:46 (include_once)
+[1.460s] 
+[1.460s] [0m
+[1.478s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found suitable version "1.74.0", minimum required is "1.65.0") found components: system chrono filesystem date_time 
+[1.632s] -- Found OpenMP_C: -fopenmp (found version "4.5") 
+[1.686s] -- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+[1.686s] -- Found OpenMP: TRUE (found version "4.5")  
+[1.686s] [0mThere is no provided OpenCV library for your compiler, relying on find_package to find it[0m
+[1.692s] -- Found OpenCV: /usr (found suitable version "4.5.4", minimum required is "4.5") 
+[1.698s] [31mCMake Error at cmake/linux/dependencies.cmake:284 (find_package):
+[1.698s]   By not providing "Findglfw3.cmake" in CMAKE_MODULE_PATH this project has
+[1.698s]   asked CMake to find a package configuration file provided by "glfw3", but
+[1.698s]   CMake did not find one.
+[1.698s] 
+[1.698s]   Could not find a package configuration file provided by "glfw3" with any of
+[1.698s]   the following names:
+[1.698s] 
+[1.698s]     glfw3Config.cmake
+[1.698s]     glfw3-config.cmake
+[1.698s] 
+[1.698s]   Add the installation prefix of "glfw3" to CMAKE_PREFIX_PATH or set
+[1.698s]   "glfw3_DIR" to a directory containing one of the above files.  If "glfw3"
+[1.698s]   provides a separate development package or SDK, be sure it has been
+[1.699s]   installed.
+[1.699s] Call Stack (most recent call first):
+[1.699s]   cmake/linux/include_once.cmake:20 (include)
+[1.699s]   src/CMakeLists.txt:46 (include_once)
+[1.699s] 
+[1.699s] [0m
+[1.699s] -- Configuring incomplete, errors occurred!
+[1.699s] See also "/home/jk/ros2_test/src/build/sibr_projects/CMakeFiles/CMakeOutput.log".
+[2.290s] Invoked command in '/home/jk/ros2_test/src/build/sibr_projects' returned '1': /usr/bin/cmake /home/jk/ros2_test/src/gaussian-splatting/SIBR_viewers -DCMAKE_INSTALL_PREFIX=/home/jk/ros2_test/src/install/sibr_projects

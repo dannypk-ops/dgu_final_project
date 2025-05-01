@@ -1,0 +1,26 @@
+running egg_info
+creating ../../../build/fused_ssim/fused_ssim.egg-info
+writing ../../../build/fused_ssim/fused_ssim.egg-info/PKG-INFO
+writing dependency_links to ../../../build/fused_ssim/fused_ssim.egg-info/dependency_links.txt
+writing top-level names to ../../../build/fused_ssim/fused_ssim.egg-info/top_level.txt
+writing manifest file '../../../build/fused_ssim/fused_ssim.egg-info/SOURCES.txt'
+reading manifest file '../../../build/fused_ssim/fused_ssim.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../../../build/fused_ssim/fused_ssim.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/jk/ros2_test/src/build/fused_ssim/build
+creating /home/jk/ros2_test/src/build/fused_ssim/build/lib.linux-x86_64-3.10
+creating /home/jk/ros2_test/src/build/fused_ssim/build/lib.linux-x86_64-3.10/fused_ssim
+copying fused_ssim/__init__.py -> /home/jk/ros2_test/src/build/fused_ssim/build/lib.linux-x86_64-3.10/fused_ssim
+running build_ext
+/home/jk/.local/lib/python3.10/site-packages/torch/utils/cpp_extension.py:424: UserWarning: There are no x86_64-linux-gnu-g++ version bounds defined for CUDA version 11.8
+  warnings.warn(f'There are no {compiler_name} version bounds defined for CUDA version {cuda_str_version}')
+building 'fused_ssim_cuda' extension
+creating /home/jk/ros2_test/src/build/fused_ssim/build/temp.linux-x86_64-3.10
+Emitting ninja build file /home/jk/ros2_test/src/build/fused_ssim/build/temp.linux-x86_64-3.10/build.ninja...
+Compiling objects...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+[1/2] c++ -MMD -MF /home/jk/ros2_test/src/build/fused_ssim/build/temp.linux-x86_64-3.10/ext.o.d -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O2 -Wall -g -fstack-protector-strong -Wformat -Werror=format-security -g -fwrapv -O2 -g -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -fPIC -I/home/jk/.local/lib/python3.10/site-packages/torch/include -I/home/jk/.local/lib/python3.10/site-packages/torch/include/torch/csrc/api/include -I/home/jk/.local/lib/python3.10/site-packages/torch/include/TH -I/home/jk/.local/lib/python3.10/site-packages/torch/include/THC -I/usr/local/cuda-11.8/include -I/home/jk/ros2_test/src/install/fused_ssim/include -I/usr/include/python3.10 -c -c /home/jk/ros2_test/src/gaussian-splatting/submodules/fused-ssim/ext.cpp -o /home/jk/ros2_test/src/build/fused_ssim/build/temp.linux-x86_64-3.10/ext.o -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=fused_ssim_cuda -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++17
+ninja: build stopped: interrupted by user.
+interrupted

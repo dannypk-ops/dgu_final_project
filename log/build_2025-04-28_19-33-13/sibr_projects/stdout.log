@@ -1,0 +1,56 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Git: /usr/bin/git (found version "2.34.1") 
+-- Git found: /usr/bin/git
+-- SIBR version :
+ BRANCH 
+ COMMIT_HASH 
+ TAG 
+ VERSION -
+-- Install path set to /home/jk/ros2_test/src/gaussian-splatting/SIBR_viewers/install.
+-- 
+
+****************** Handling core dependencies ******************
+-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so   
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") 
+-- Performing Test HAVE_EGL
+-- Performing Test HAVE_EGL - Success
+-- FindGLEW: did not find GLEW CMake config file. Searching for libraries.
+-- FindGLEW: GLEW_USE_STATIC_LIBS is undefined. Treated as FALSE.
+-- FindGLEW: GLEW_INCLUDE_DIR: /usr/include
+-- FindGLEW: GLEW_INCLUDE_DIRS: /usr/include
+-- FindGLEW: CMAKE_FIND_LIBRARY_SUFFIXES for SHARED: .so;.a
+-- FindGLEW: CMAKE_FIND_LIBRARY_SUFFIXES for STATIC: .so
+-- FindGLEW: GLEW_SHARED_LIBRARY_RELEASE: /usr/lib/x86_64-linux-gnu/libGLEW.so
+-- FindGLEW: GLEW_STATIC_LIBRARY_RELEASE: /usr/lib/x86_64-linux-gnu/libGLEW.a
+-- FindGLEW: GLEW_SHARED_LIBRARY_DEBUG: GLEW_SHARED_LIBRARY_DEBUG-NOTFOUND
+-- FindGLEW: GLEW_STATIC_LIBRARY_DEBUG: GLEW_STATIC_LIBRARY_DEBUG-NOTFOUND
+-- FindGLEW: GLEW_SHARED_LIBRARY: /usr/lib/x86_64-linux-gnu/libGLEW.so
+-- FindGLEW: GLEW_STATIC_LIBRARY: /usr/lib/x86_64-linux-gnu/libGLEW.a
+-- FindGLEW: GLEW_LIBRARIES: /usr/lib/x86_64-linux-gnu/libGLEW.so
+-- FindGLEW: GLEW_VERSION_MAJOR: 2
+-- FindGLEW: GLEW_VERSION_MINOR: 2
+-- FindGLEW: GLEW_VERSION_MICRO: 0
+-- FindGLEW: GLEW_VERSION: 2.2.0
+-- Found GLEW: /usr/include (found version "2.2.0") 
+-- FindGLEW: Creating GLEW::glew imported target.
+-- FindGLEW: Creating GLEW::GLEW imported target.
+-- Found ASSIMP: /usr/include  
+-- Found FFMPEG: /usr/include/x86_64-linux-gnu  
+-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found suitable version "1.74.0", minimum required is "1.65.0") found components: system chrono filesystem date_time 
+-- Found OpenMP_C: -fopenmp (found version "4.5") 
+-- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+-- Found OpenMP: TRUE (found version "4.5")  
+-- Found OpenCV: /usr (found suitable version "4.5.4", minimum required is "4.5") 
+-- Configuring incomplete, errors occurred!
+See also "/home/jk/ros2_test/src/build/sibr_projects/CMakeFiles/CMakeOutput.log".

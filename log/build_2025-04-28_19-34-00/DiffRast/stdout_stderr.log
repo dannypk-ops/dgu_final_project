@@ -1,0 +1,23 @@
+[ 25%] [32mBuilding CUDA object CMakeFiles/CudaRasterizer.dir/cuda_rasterizer/backward.cu.o[0m
+[ 50%] [32mBuilding CUDA object CMakeFiles/CudaRasterizer.dir/cuda_rasterizer/rasterizer_impl.cu.o[0m
+[ 75%] [32mBuilding CUDA object CMakeFiles/CudaRasterizer.dir/cuda_rasterizer/forward.cu.o[0m
+[01m[0m[01m/home/jk/ros2_test/src/gaussian-splatting/submodules/diff-gaussian-rasterization/cuda_rasterizer/auxiliary.h(163)[0m: [01;35mwarning[0m #177-D: variable [01m"p_proj"[0m was declared but never referenced
+
+[01m[0m[01m/home/jk/ros2_test/src/gaussian-splatting/submodules/diff-gaussian-rasterization/cuda_rasterizer/auxiliary.h(163)[0m: [01;35mwarning[0m #177-D: variable [01m"p_proj"[0m was declared but never referenced
+
+[01m[0m[01m/home/jk/ros2_test/src/gaussian-splatting/submodules/diff-gaussian-rasterization/cuda_rasterizer/auxiliary.h(163)[0m: [01;35mwarning[0m #177-D: variable [01m"p_proj"[0m was declared but never referenced
+
+[01m[0m[01m/home/jk/ros2_test/src/gaussian-splatting/submodules/diff-gaussian-rasterization/cuda_rasterizer/auxiliary.h(163)[0m: [01;35mwarning[0m #177-D: variable [01m"p_proj"[0m was declared but never referenced
+
+[01m[0m[01m/home/jk/ros2_test/src/gaussian-splatting/submodules/diff-gaussian-rasterization/cuda_rasterizer/auxiliary.h(163)[0m: [01;35mwarning[0m #177-D: variable [01m"p_proj"[0m was declared but never referenced
+
+[01m[0m[01m/home/jk/ros2_test/src/gaussian-splatting/submodules/diff-gaussian-rasterization/cuda_rasterizer/auxiliary.h(163)[0m: [01;35mwarning[0m #177-D: variable [01m"p_proj"[0m was declared but never referenced
+
+[01m[0m[01m/home/jk/ros2_test/src/gaussian-splatting/submodules/diff-gaussian-rasterization/cuda_rasterizer/auxiliary.h(163)[0m: [01;35mwarning[0m #177-D: variable [01m"p_proj"[0m was declared but never referenced
+
+[01m[0m[01m/home/jk/ros2_test/src/gaussian-splatting/submodules/diff-gaussian-rasterization/cuda_rasterizer/auxiliary.h(163)[0m: [01;35mwarning[0m #177-D: variable [01m"p_proj"[0m was declared but never referenced
+
+[01m[0m[01m/home/jk/ros2_test/src/gaussian-splatting/submodules/diff-gaussian-rasterization/cuda_rasterizer/auxiliary.h(163)[0m: [01;35mwarning[0m #177-D: variable [01m"p_proj"[0m was declared but never referenced
+
+[100%] [32m[1mLinking CUDA static library libCudaRasterizer.a[0m
+[100%] Built target CudaRasterizer

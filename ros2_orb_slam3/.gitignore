@@ -5,3 +5,5 @@ README.md
 *.bin
 *.ply
 *.db
+*.log
+src/ros2_orb_slam3/colmap_output/

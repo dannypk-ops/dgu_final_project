@@ -1,0 +1,27 @@
+[2.293s] Invoking command in '/home/jk/ros2_test/src/gaussian-splatting/submodules/fused-ssim': PYTHONPATH=/home/jk/ros2_test/src/build/fused_ssim/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jk/ros2_test/src/install/fused_ssim/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/fused_ssim build --build-base /home/jk/ros2_test/src/build/fused_ssim/build install --record /home/jk/ros2_test/src/build/fused_ssim/install.log --single-version-externally-managed
+[3.186s] running egg_info
+[3.186s] creating ../../../build/fused_ssim/fused_ssim.egg-info
+[3.186s] writing ../../../build/fused_ssim/fused_ssim.egg-info/PKG-INFO
+[3.186s] writing dependency_links to ../../../build/fused_ssim/fused_ssim.egg-info/dependency_links.txt
+[3.186s] writing top-level names to ../../../build/fused_ssim/fused_ssim.egg-info/top_level.txt
+[3.186s] writing manifest file '../../../build/fused_ssim/fused_ssim.egg-info/SOURCES.txt'
+[3.197s] reading manifest file '../../../build/fused_ssim/fused_ssim.egg-info/SOURCES.txt'
+[3.197s] adding license file 'LICENSE'
+[3.198s] writing manifest file '../../../build/fused_ssim/fused_ssim.egg-info/SOURCES.txt'
+[3.198s] running build
+[3.198s] running build_py
+[3.198s] creating /home/jk/ros2_test/src/build/fused_ssim/build
+[3.198s] creating /home/jk/ros2_test/src/build/fused_ssim/build/lib.linux-x86_64-3.10
+[3.198s] creating /home/jk/ros2_test/src/build/fused_ssim/build/lib.linux-x86_64-3.10/fused_ssim
+[3.198s] copying fused_ssim/__init__.py -> /home/jk/ros2_test/src/build/fused_ssim/build/lib.linux-x86_64-3.10/fused_ssim
+[3.198s] running build_ext
+[3.202s] /home/jk/.local/lib/python3.10/site-packages/torch/utils/cpp_extension.py:424: UserWarning: There are no x86_64-linux-gnu-g++ version bounds defined for CUDA version 11.8
+[3.202s]   warnings.warn(f'There are no {compiler_name} version bounds defined for CUDA version {cuda_str_version}')
+[3.202s] building 'fused_ssim_cuda' extension
+[3.202s] creating /home/jk/ros2_test/src/build/fused_ssim/build/temp.linux-x86_64-3.10
+[3.216s] Emitting ninja build file /home/jk/ros2_test/src/build/fused_ssim/build/temp.linux-x86_64-3.10/build.ninja...
+[3.216s] Compiling objects...
+[3.216s] Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+[16.006s] [1/2] c++ -MMD -MF /home/jk/ros2_test/src/build/fused_ssim/build/temp.linux-x86_64-3.10/ext.o.d -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O2 -Wall -g -fstack-protector-strong -Wformat -Werror=format-security -g -fwrapv -O2 -g -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -fPIC -I/home/jk/.local/lib/python3.10/site-packages/torch/include -I/home/jk/.local/lib/python3.10/site-packages/torch/include/torch/csrc/api/include -I/home/jk/.local/lib/python3.10/site-packages/torch/include/TH -I/home/jk/.local/lib/python3.10/site-packages/torch/include/THC -I/usr/local/cuda-11.8/include -I/home/jk/ros2_test/src/install/fused_ssim/include -I/usr/include/python3.10 -c -c /home/jk/ros2_test/src/gaussian-splatting/submodules/fused-ssim/ext.cpp -o /home/jk/ros2_test/src/build/fused_ssim/build/temp.linux-x86_64-3.10/ext.o -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=fused_ssim_cuda -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++17
+[30.068s] ninja: build stopped: interrupted by user.
+[30.068s] interrupted
