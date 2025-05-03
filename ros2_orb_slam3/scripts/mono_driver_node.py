@@ -286,7 +286,7 @@ def main(args = None):
     # 3. pose를 이용하여 colmap을 수행
     # 4. 생성된 point cloud를 반환.
 
-    time.sleep(300)
+    time.sleep(30)
 
     # 1. Localization Mode ON
     print("-----Sample new data with same environment-----")

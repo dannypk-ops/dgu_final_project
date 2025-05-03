@@ -201,6 +201,7 @@ public:
     // custom
     std::map<std::size_t, cv::Mat> GetAllKeyFrameImages();
     std::map<std::size_t, KFData> GetAllKeyFrameData();
+    std::vector<KeyFrame*> GetKeyFrames();
 
     // For debugging
     double GetTimeFromIMUInit();

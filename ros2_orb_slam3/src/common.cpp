@@ -15,6 +15,7 @@ REQUIREMENTS
 #include "rcpputils/filesystem_helper.hpp"  // 반드시 상단에 추가!
 #include <vector>            // ✅ std::vector
 #include <opencv2/core.hpp>  // ✅ cv::Mat (KeyFrame에서 imRGB 등 사용 시 필요)
+using ORB_SLAM3::KeyFrame;
 
 void printSE3f(const Sophus::SE3f& Twc) {
     // rotation matrix (3x3)
@@ -226,75 +227,80 @@ void MonocularMode::Img_callback(const sensor_msgs::msg::Image& msg)
 
 // }
 
-void MonocularMode::finish_callback(const std_msgs::msg::String& msg) {
-
+void MonocularMode::finish_callback(const std_msgs::msg::String& msg)
+{
+    /* ------------ 0. 경로 설정 ------------ */
     const std::string iter = "iteration" + std::to_string(this->image_processing_time);
-
-    // 2) 필요한 경로들
-    std::string base_dir = this->kRoot + iter;                               // .../iterationN
-    std::string traj_dir = base_dir + "/SLAM_pose";                    // .../iterationN/SLAM_pose
-    std::string traj_file = traj_dir + "/trajectory.txt";              // .../SLAM_pose/trajectory.txt
-    std::string save_dir  = base_dir + "/SLAM_images";                 // .../iterationN/SLAM_images
+    std::string base_dir = kRoot + iter,
+                traj_dir = base_dir + "/SLAM_pose",
+                traj_file = traj_dir + "/trajectory.txt",
+                save_dir  = base_dir + "/SLAM_images";
 
     if (!rcpputils::fs::exists(base_dir)) {
-        rcpputils::fs::create_directories(base_dir);
         rcpputils::fs::create_directories(traj_dir);
         rcpputils::fs::create_directories(save_dir);
     }
 
+    /* ------------ 1. Trajectory 저장 ------------ */
     if (msg.data == "done") {
-        RCLCPP_INFO(this->get_logger(), "📩 Received 'done' signal from Python. Publishing trajectory...");
-
-        // SaveTrajectory의 함수로 현재 Kerframe ID가 없는, 새로운 이미지에 대한 pose만을 저장하도록 수정.
-        if (this->image_processing_time == 0)
+        if (image_processing_time == 0)
             pAgent->SaveTrajectoryEuRoC(traj_file);
         else
-            pAgent->SaveTrajectoryEuRoC(traj_file, this->keyframe_index);
-
-        RCLCPP_INFO(this->get_logger(), "✅ Final trajectory published.");
+            pAgent->SaveTrajectoryEuRoC(traj_file, keyframe_index);
     }
-    
+
+    /* ------------ 2. 이미지 저장 ------------ */
+    std::vector<ORB_SLAM3::KeyFrame*> vpKFs = pAgent->GetKeyFrames();
+    std::unordered_set<std::size_t> seen_ids(keyframe_index.begin(),
+                                             keyframe_index.end());
+    std::unordered_set<std::size_t> remove_ids;
+    std::unordered_set<std::size_t> saved_ids;      // 이번 함수에서 이미 저장한 ID
+
+    /* 2‑A) remove_ids 수집 : 새 KF ↔ 기존(seen) KF */
+    for (ORB_SLAM3::KeyFrame* pKF : vpKFs) {
+        if (!pKF || pKF->isBad() || pKF->imRGB.empty()) continue;
+        if (seen_ids.count(pKF->mnId)) continue;         // 새 KF 만
+
+        const auto& sNeigh = pKF->GetConnectedKeyFrames();
+        for (ORB_SLAM3::KeyFrame* pNeigh : sNeigh)
+            if (pNeigh && !pNeigh->isBad() && !pNeigh->imRGB.empty()
+                &&  seen_ids.count(pNeigh->mnId))
+                remove_ids.insert(pNeigh->mnId);
+    }
+
+    /* 2‑B) 이미지 저장 */
     auto kf_data = pAgent->GetAllKeyFrameData();
-
-    // keyframe_index는 클래스 멤버: std::vector<std::size_t> keyframe_index;
-    std::unordered_set<std::size_t> seen_ids(this->keyframe_index.begin(),
-                                            this->keyframe_index.end());
-
     int idx = 0;
-    for (const auto& [kf_id, data] : kf_data)           // 모든 KeyFrame 순회
-    {
-        // ── 1) 중복 검사 ──────────────────────────────────────────────
-        if (seen_ids.count(kf_id)) {
-            continue;                                   // 이미 처리한 ID면 건너뜀
-        }
 
-        const cv::Mat& img = data.image;
-        if (img.empty()) continue;
+    for (ORB_SLAM3::KeyFrame* pKF : vpKFs) {
+        if (!pKF || pKF->isBad() || pKF->imRGB.empty()) continue;
+        std::size_t id = pKF->mnId;
 
-        // ── 2) 파일명 생성 ────────────────────────────────────────────
+        if (remove_ids.count(id) || saved_ids.count(id)) continue;  // 중복·제외
+        auto dit = kf_data.find(id);
+        if (dit == kf_data.end() || dit->second.image.empty()) continue;
+
         std::ostringstream oss;
         oss << save_dir << "/keyframe_"
-            << std::setw(4) << std::setfill('0') << idx++   // 0000, 0001, …
-            << "_id" << kf_id << ".png";
+            << std::setw(4) << std::setfill('0') << idx++
+            << "_id" << id << ".png";
 
-        const std::string filename = oss.str();
-
-        // ── 3) 저장 & 인덱스 갱신 ─────────────────────────────────────
-        if (cv::imwrite(filename, img)) {
-            std::cout << "✅ Saved: " << filename << '\n';
-            this->keyframe_index.push_back(kf_id);  // 벡터에도 기록
-        } else {
-            std::cerr << "❌ Failed to save: " << filename << '\n';
+        if (cv::imwrite(oss.str(), dit->second.image)) {
+            std::cout << "✅ Saved: " << oss.str() << '\n';
+            keyframe_index.push_back(id);   // 다음 회차부터 seen
+            saved_ids.insert(id);
         }
     }
 
-    // 콜맵 실행 신호 전달
+    /* ------------ 3. COLMAP 트리거 ------------ */
     std_msgs::msg::String slam_done_msg;
     slam_done_msg.data = base_dir;
     init_colmap_publisher_->publish(slam_done_msg);
 
-    this->image_processing_time += 1;
+    ++image_processing_time;
 }
+
+
 
 void MonocularMode::LocalizationMode_callback(const std_msgs::msg::String& msg) {
     std::string requestedMode = msg.data;

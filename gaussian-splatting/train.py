@@ -22,6 +22,7 @@ from tqdm import tqdm
 from utils.image_utils import psnr
 from argparse import ArgumentParser, Namespace
 from arguments import ModelParams, PipelineParams, OptimizationParams
+
 try:
     from torch.utils.tensorboard import SummaryWriter
     TENSORBOARD_FOUND = True
@@ -51,9 +52,19 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
     scene = Scene(dataset, gaussians)
     gaussians.training_setup(opt)
 
+    init_gaussians = None
     if checkpoint:
+        print("restore_before_model...")
         (model_params, first_iter) = torch.load(checkpoint)
+        # init_gaussians = GaussianModel(dataset.sh_degree, opt.optimizer_type)
+        # _ = Scene(dataset, init_gaussians)
+        # init_gaussians.restore(model_params, opt)
+
+        # gaussians.merge_gs(init_gaussians)
+        # gaussians.training_setup(opt)
         gaussians.restore(model_params, opt)
+        gaussians.training_setup(opt)
+        print(f"Number of Gaussians : {gaussians.get_xyz.shape}")
 
     bg_color = [1, 1, 1] if dataset.white_background else [0, 0, 0]
     background = torch.tensor(bg_color, dtype=torch.float32, device="cuda")
@@ -70,7 +81,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
     ema_Ll1depth_for_log = 0.0
 
     # scene의 camera의 수에 따라서 최종 iterations가 수정이 되게끔 구현
-    opt.iterations = len(scene.getTrainCameras()) * 100
+    opt.iterations = len(scene.getTrainCameras()) * 100 if len(scene.getTrainCameras()) >= 100 else 30000
     opt.densify_until_iter = opt.iterations // 2
     checkpoint_iterations = [opt.iterations]
     saving_iterations = [opt.iterations]
@@ -80,23 +91,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
     first_iter += 1
 
     for iteration in range(first_iter, opt.iterations + 1):
-        # if network_gui.conn == None:
-        #     network_gui.try_connect()
-        # while network_gui.conn != None:
-        #     try:
-        #         net_image_bytes = None
-        #         custom_cam, do_training, pipe.convert_SHs_python, pipe.compute_cov3D_python, keep_alive, scaling_modifer = network_gui.receive()
-        #         if custom_cam != None:
-        #             net_image = render(custom_cam, gaussians, pipe, background, scaling_modifier=scaling_modifer, use_trained_exp=dataset.train_test_exp, separate_sh=SPARSE_ADAM_AVAILABLE)["render"]
-        #             net_image_bytes = memoryview((torch.clamp(net_image, min=0, max=1.0) * 255).byte().permute(1, 2, 0).contiguous().cpu().numpy())
-        #         network_gui.send(net_image_bytes, dataset.source_path)
-        #         if do_training and ((iteration < int(opt.iterations)) or not keep_alive):
-        #             break
-        #     except Exception as e:
-        #         network_gui.conn = None
-
         iter_start.record()
-
         gaussians.update_learning_rate(iteration)
 
         # Every 1000 its we increase the levels of SH up to a maximum degree
@@ -290,8 +285,9 @@ if __name__ == "__main__":
 
     # if __debug__:
     #     args.source_path = "/home/jk/ros2_test/src/ros2_orb_slam3/colmap_output/iteration0/final"
-    #     args.start_checkpoint = "/home/jk/ros2_test/src/gaussian-splatting/output/93c16931-f/chkpnt38900.pth"
+        # args.start_checkpoint = "/home/jk/ros2_test/gs_output/model/model.pth"
 
+    args.start_checkpoint = None
     # Initialize system state (RNG)
     safe_state(args.quiet)
 
@@ -303,3 +299,97 @@ if __name__ == "__main__":
 
     # All done
     print("\nTraining complete.")
+
+
+import open3d as o3d
+import numpy as np
+
+def vis_gs(pc, cam=None, save=False, mask=None):
+    from utils.sh_utils import eval_sh
+    pcd = o3d.geometry.PointCloud()
+    
+    if mask is not None:
+        shs_view = pc.get_features[mask].transpose(1, 2).view(-1, 3, (pc.max_sh_degree+1)**2)
+        dir_pp = (pc.get_xyz)[mask]
+        dir_pp_normalized = dir_pp/dir_pp.norm(dim=1, keepdim=True)
+        sh2rgb = eval_sh(pc.active_sh_degree, shs_view, dir_pp_normalized)
+        colors_precomp = torch.clamp_min(sh2rgb + 0.5, 0.0)
+        
+        point = o3d.utility.Vector3dVector(pc.get_xyz[mask].detach().cpu().numpy())
+        color = o3d.utility.Vector3dVector(colors_precomp.detach().cpu().numpy())
+        
+        pcd.points = point
+        pcd.colors = color
+    
+    else:
+        shs_view = pc.get_features.transpose(1, 2).view(-1, 3, (pc.max_sh_degree+1)**2)
+        dir_pp = (pc.get_xyz)
+        dir_pp_normalized = dir_pp/dir_pp.norm(dim=1, keepdim=True)
+        sh2rgb = eval_sh(pc.active_sh_degree, shs_view, dir_pp_normalized)
+        colors_precomp = torch.clamp_min(sh2rgb + 0.5, 0.0)
+        
+        point = o3d.utility.Vector3dVector(pc.get_xyz.detach().cpu().numpy())
+        color = o3d.utility.Vector3dVector(colors_precomp.detach().cpu().numpy())
+        
+        pcd.points = point
+        pcd.colors = color
+    
+    if cam is not None:
+        total_list = [pcd]
+        if isinstance(cam, list):
+            for c in cam:
+                cam_actor = create_camera_actor(True)
+                ref_pose = np.eye(4)
+                R, T = c.R, c.T
+                ref_pose[:3, :3] = R
+                ref_pose[:3, 3] = T
+                
+                ref_pose = np.linalg.inv(ref_pose)
+                cam_actor.transform(ref_pose)
+                # cam_actor.rotate(R)
+                # cam_actor.translate(T)
+                total_list.append(cam_actor)
+        else :
+            cam_actor = create_camera_actor(True)
+            c = cam
+            ref_pose = np.eye(4)
+            R, T = c.R, c.T
+            ref_pose[:3, :3] = R
+            ref_pose[:3, 3] = T
+            
+            ref_pose = np.linalg.inv(ref_pose)
+            cam_actor.transform(ref_pose)
+            # cam_actor.rotate(R)
+            # cam_actor.translate(T)
+            total_list.append(cam_actor)
+        return o3d.visualization.draw_geometries(total_list)
+    
+    if save:
+        o3d.io.write_point_cloud("test.ply", pcd)
+        
+    o3d.visualization.draw_geometries([pcd])
+
+def create_camera_actor(g, scale=5.0):
+    """ build open3d camera polydata """
+    
+    CAM_POINTS = np.array([
+            [ 0,   0,   0],
+            [-1,  -1, 1.5],
+            [ 1,  -1, 1.5],
+            [ 1,   1, 1.5],
+            [-1,   1, 1.5],
+            [-0.5, 1, 1.5],
+            [ 0.5, 1, 1.5],
+            [ 0, 1.2, 1.5]]) / 3
+
+    CAM_LINES = np.array([
+        [1,2], [2,3], [3,4], [4,1], [1,0], [0,2], [3,0], [0,4], [5,7], [7,6]])
+
+
+    camera_actor = o3d.geometry.LineSet(
+        points=o3d.utility.Vector3dVector(scale * CAM_POINTS),
+        lines=o3d.utility.Vector2iVector(CAM_LINES))
+
+    color = (g * 1.0, 0.5 * (1-g), 0.9 * (1-g))
+    camera_actor.paint_uniform_color(color)
+    return camera_actor

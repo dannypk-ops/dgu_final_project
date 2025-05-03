@@ -170,6 +170,7 @@ class GaussianModel:
         self._rotation = nn.Parameter(rots.requires_grad_(True))
         self._opacity = nn.Parameter(opacities.requires_grad_(True))
         self.max_radii2D = torch.zeros((self.get_xyz.shape[0]), device="cuda")
+
         self.exposure_mapping = {cam_info.image_name: idx for idx, cam_info in enumerate(cam_infos)}
         self.pretrained_exposures = None
         exposure = torch.eye(3, 4, device="cuda")[None].repeat(len(cam_infos), 1, 1)
@@ -471,3 +472,77 @@ class GaussianModel:
     def add_densification_stats(self, viewspace_point_tensor, update_filter):
         self.xyz_gradient_accum[update_filter] += torch.norm(viewspace_point_tensor.grad[update_filter,:2], dim=-1, keepdim=True)
         self.denom[update_filter] += 1
+
+    # def merge_gs(self, init_gs, train_cams, pipe, bg):
+
+    #     from gaussian_renderer import render
+
+    #     import matplotlib.pyplot as plt
+    #     tmp_path = "/home/jk/Desktop/image"
+
+    #     for cam in train_cams:
+    #         init_image = render(cam, init_gs, pipe, bg, use_trained_exp=False, separate_sh=False)["render"]
+    #         new_image = render(cam, self, pipe, bg, use_trained_exp=False, separate_sh=False)["render"]
+
+    #         img1 = init_image.detach().cpu().numpy().transpose(1,2,0)
+    #         img2 = new_image.detach().cpu().numpy().transpose(1,2,0)
+
+    #         plt.imshow(img1)
+    #         plt.axis('off')  # 축 제거
+    #         plt.savefig(f"{tmp_path}/init_img{cam.uid}.png", dpi=100, bbox_inches='tight')
+
+    #         plt.imshow(img2)
+    #         plt.axis('off')  # 축 제거
+    #         plt.savefig(f"{tmp_path}/new_img{cam.uid}.png", dpi=100, bbox_inches='tight')
+
+    def merge_gs(self, init_gs):
+        # ---------- 1) numpy로 뽑기 ----------
+        xyz           = init_gs._xyz.detach().cpu().numpy()
+        f_dc          = init_gs._features_dc.detach().cpu().numpy()
+        f_rest        = init_gs._features_rest.detach().cpu().numpy()
+        scaling       = init_gs._scaling.detach().cpu().numpy()
+        rotation      = init_gs._rotation.detach().cpu().numpy()
+        opacity       = init_gs._opacity.detach().cpu().numpy()
+        max_radii2D   = init_gs.max_radii2D.detach().cpu().numpy()
+
+        tmp_xyz       = self._xyz.detach().cpu().numpy()
+        tmp_f_dc      = self._features_dc.detach().cpu().numpy()
+        tmp_f_rest    = self._features_rest.detach().cpu().numpy()
+        tmp_scaling   = self._scaling.detach().cpu().numpy()
+        tmp_rotation  = self._rotation.detach().cpu().numpy()
+        tmp_opacity   = self._opacity.detach().cpu().numpy()
+        tmp_max_r2d   = self.max_radii2D.detach().cpu().numpy()
+
+        # ---------- 2) concat & float32 ----------
+        to_tensor = lambda arr: torch.from_numpy(arr.astype(np.float32)).cuda()
+
+        merged_xyz        = to_tensor(np.concatenate((xyz,        tmp_xyz     ), axis=0))
+        merged_f_dc       = to_tensor(np.concatenate((f_dc,       tmp_f_dc    ), axis=0))
+        merged_f_rest     = to_tensor(np.concatenate((f_rest,     tmp_f_rest  ), axis=0))
+        merged_scaling    = to_tensor(np.concatenate((scaling,    tmp_scaling ), axis=0))
+        merged_rotation   = to_tensor(np.concatenate((rotation,   tmp_rotation), axis=0))
+        merged_opacity    = to_tensor(np.concatenate((opacity,    tmp_opacity ), axis=0))
+        merged_max_r2d    = to_tensor(np.concatenate((max_radii2D,tmp_max_r2d ), axis=0))
+
+        # ---------- 3) 파라미터 재할당 ----------
+        self._xyz           = nn.Parameter(merged_xyz.contiguous(),          requires_grad=True)
+        self._features_dc   = nn.Parameter(merged_f_dc.contiguous(),         requires_grad=True)
+        self._features_rest = nn.Parameter(merged_f_rest.contiguous(),       requires_grad=True)
+        self._scaling       = nn.Parameter(merged_scaling.contiguous(),      requires_grad=True)
+        self._rotation      = nn.Parameter(merged_rotation.contiguous(),     requires_grad=True)
+        self._opacity       = nn.Parameter(merged_opacity.contiguous(),      requires_grad=True)
+        self.max_radii2D    =                merged_max_r2d.contiguous()     # 학습 X
+
+        # ---------- 4) optimizer에 새 파라미터 등록 ----------
+        # 기존 optimizer가 있다면 새 텐서로 교체
+        if self.optimizer is not None:
+            self.optimizer.param_groups.clear()
+
+        if self.optimizer is not None:
+            self.optimizer.param_groups.clear()   # 깔끔하게 비우고
+            self.optimizer.add_param_group({"params":[self._xyz],           "name":"xyz"})
+            self.optimizer.add_param_group({"params":[self._features_dc],   "name":"f_dc"})
+            self.optimizer.add_param_group({"params":[self._features_rest], "name":"f_rest"})
+            self.optimizer.add_param_group({"params":[self._opacity],       "name":"opacity"})
+            self.optimizer.add_param_group({"params":[self._scaling],       "name":"scaling"})
+            self.optimizer.add_param_group({"params":[self._rotation],      "name":"rotation"})
