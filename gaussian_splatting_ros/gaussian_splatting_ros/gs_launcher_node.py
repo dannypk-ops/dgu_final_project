@@ -44,18 +44,12 @@ class GSLauncher(Node):
 
         gs_dir = '/home/jk/ros2_test/src/gaussian-splatting'
 
-        def run_process(checkpoint):
+        def run_process():
             try:
-                if not checkpoint:
-                    subprocess.run(
-                        ['python3', 'train.py', '-s', source_path],
-                        cwd=gs_dir, check=True
-                    )
-                else:
-                    subprocess.run(
-                        ['python3', 'train.py', '-s', source_path, '--start_checkpoint', checkpoint],
-                        cwd=gs_dir, check=True
-                    )
+                subprocess.run(
+                    ['python3', 'train.py', '-s', source_path],
+                    cwd=gs_dir, check=True
+                )
                 self.get_logger().info("✅ GS training finished!")
             except subprocess.CalledProcessError as e:
                 self.get_logger().error(f"❌ GS training failed: {e}")
@@ -64,7 +58,7 @@ class GSLauncher(Node):
                     self.is_running = False
                     self.process_next()
 
-        threading.Thread(target=run_process, args=(checkpoint,)).start()
+        threading.Thread(target=run_process).start()
 
 def main(args=None):
     rclpy.init(args=args)

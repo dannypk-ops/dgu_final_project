@@ -40,6 +40,7 @@ Camera2.k2: 0.07451284
 Camera2.p1: -0.00010473
 Camera2.p2: -3.55590700e-05
 
+
 Camera.width: 752
 Camera.height: 480
 
@@ -64,7 +65,7 @@ Stereo.T_c1_c2: !!opencv-matrix
 #--------------------------------------------------------------------------------------------
 
 # ORB Extractor: Number of features per image
-ORBextractor.nFeatures: 1200
+ORBextractor.nFeatures: 3000
 
 # ORB Extractor: Scale factor between levels in the scale pyramid 	
 ORBextractor.scaleFactor: 1.2
@@ -76,7 +77,7 @@ ORBextractor.nLevels: 8
 # Image is divided in a grid. At each cell FAST are extracted imposing a minimum response.
 # Firstly we impose iniThFAST. If no corners are detected we impose a lower value minThFAST
 # You can lower these values if your images have low contrast			
-ORBextractor.iniThFAST: 20
+ORBextractor.iniThFAST: 18
 ORBextractor.minThFAST: 7
 
 #--------------------------------------------------------------------------------------------
@@ -93,4 +94,3 @@ Viewer.ViewpointY: -0.7
 Viewer.ViewpointZ: -1.8
 Viewer.ViewpointF: 500.0
 Viewer.imageViewScale: 1.0
-

@@ -90,6 +90,7 @@ class MonocularMode : public rclcpp::Node
         
         // 인덱스 관리 
         std::vector<int> keyframe_index;  
+        std::unordered_set<std::size_t> removed_index;
 
         // source path
         std::string kRoot = "/home/jk/ros2_test/src/ros2_orb_slam3/colmap_output/";

@@ -259,14 +259,42 @@ void MonocularMode::finish_callback(const std_msgs::msg::String& msg)
     /* 2‑A) remove_ids 수집 : 새 KF ↔ 기존(seen) KF */
     for (ORB_SLAM3::KeyFrame* pKF : vpKFs) {
         if (!pKF || pKF->isBad() || pKF->imRGB.empty()) continue;
-        if (seen_ids.count(pKF->mnId)) continue;         // 새 KF 만
+        if (seen_ids.count(pKF->mnId))                  continue;   // 새 KF
 
-        const auto& sNeigh = pKF->GetConnectedKeyFrames();
-        for (ORB_SLAM3::KeyFrame* pNeigh : sNeigh)
-            if (pNeigh && !pNeigh->isBad() && !pNeigh->imRGB.empty()
-                &&  seen_ids.count(pNeigh->mnId))
+        /* (1) weight 내림차순 리스트 */
+        const auto& vCov = pKF->GetCovisiblesByWeight(0);
+        if (vCov.size() < 2) continue;                              // 이웃이 0·1개면 컷 불필요
+
+        /* (2) weight 배열 추출 */
+        std::vector<int> w;
+        w.reserve(vCov.size());
+        for (auto* n : vCov) w.push_back(pKF->GetWeight(n));
+
+        /* (3) 최대 갭 위치 찾기 */
+        int cut_idx = 0;                // keep vCov[0 .. cut_idx] inclusive
+        int max_gap = -1;
+        for (std::size_t i = 0; i + 1 < w.size(); ++i) {
+            int gap = w[i] - w[i + 1];
+            if (gap > max_gap) { max_gap = gap; cut_idx = static_cast<int>(i); }
+        }
+
+        /* (4) cut_idx 이전 이웃만 remove_ids 후보 */
+        for (int i = 0; i <= cut_idx; ++i) {
+            ORB_SLAM3::KeyFrame* pNeigh = vCov[i];
+            if (!pNeigh || pNeigh->isBad() || pNeigh->imRGB.empty()) continue;
+            if (seen_ids.count(pNeigh->mnId)) {
                 remove_ids.insert(pNeigh->mnId);
+                // std::cout << "neigh="   << pNeigh->mnId
+                //         << " weight=" << w[i]
+                //         << " gap="    << max_gap
+                //         << '\n';
+            }
+        }
     }
+
+    // 이전 state에서 수집된 removed_idx를 현재 remove_ids에 추가.
+    if (! removed_index.empty())
+        remove_ids.insert(removed_index.begin(), removed_index.end());
 
     /* 2‑B) 이미지 저장 */
     auto kf_data = pAgent->GetAllKeyFrameData();
@@ -292,6 +320,18 @@ void MonocularMode::finish_callback(const std_msgs::msg::String& msg)
         }
     }
 
+    // 다음 image stream을 위하여 삭제된 keyframe index 유지.
+    // keyframe_index 최신화
+    this->removed_index = remove_ids;
+    this->keyframe_index.erase(
+        std::remove_if(
+            this->keyframe_index.begin(), this->keyframe_index.end(),
+            [&](int id){
+                return remove_ids.count(static_cast<std::size_t>(id)) > 0;
+            }),
+        this->keyframe_index.end());
+
+
     /* ------------ 3. COLMAP 트리거 ------------ */
     std_msgs::msg::String slam_done_msg;
     slam_done_msg.data = base_dir;
@@ -312,12 +352,12 @@ void MonocularMode::LocalizationMode_callback(const std_msgs::msg::String& msg) 
 
     if (requestedMode == "Localization") {
         RCLCPP_INFO(this->get_logger(), "🟢 New environment input start...");
-        // pAgent->ActivateLocalizationMode();
+        pAgent->ActivateLocalizationMode();
         currentMode = "Localization";
     } 
     else if (requestedMode == "SLAM") {
         RCLCPP_INFO(this->get_logger(), "🟢 Switching to SLAM Mode");
-        // pAgent->DeactivateLocalizationMode();
+        pAgent->DeactivateLocalizationMode();
         currentMode = "SLAM";
     } 
     else {

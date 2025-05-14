@@ -7,3 +7,6 @@ README.md
 *.db
 *.log
 src/ros2_orb_slam3/colmap_output/
+*.txt
+*.ipynb
+*.jpg

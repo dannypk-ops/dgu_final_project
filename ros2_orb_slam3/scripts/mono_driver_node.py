@@ -90,6 +90,7 @@ class MonoDriver(Node):
         # Read images from the chosen dataset, order them in ascending order and prepare timestep data as well
         self.imgz_seqz_dir, self.imgz_seqz, self.time_seqz = self.get_image_dataset_asl(self.image_sequence_dir, "mav0") 
         self.imgz_seqz_dir_local, self.imgz_seqz_local, self.time_seqz_local = self.get_image_dataset_asl(self.image_sequence_dir_localization, "mav0")
+        self.imgz_seqz_dir_local2, self.imgz_seqz_local2, self.time_seqz_local2 = self.get_image_dataset_asl(self.image_sequence_dir_localization, "mav1")
 
         print(self.image_seq_dir)
         print(len(self.imgz_seqz))
@@ -203,10 +204,13 @@ class MonoDriver(Node):
         # Path to this image
         if mode == "SLAM":
             img_look_up_path = self.imgz_seqz_dir  + imgz_name
-        else:
+        elif mode == "Localization":
             img_look_up_path = self.imgz_seqz_dir_local + imgz_name
+        else:
+            img_look_up_path = self.imgz_seqz_dir_local2 + imgz_name
 
-        timestep = float(imgz_name.split(".")[0]) # Kept if you use a custom message interface to also pass timestep value
+        timestep = float(imgz_name.split(".")[0].split("_")[1]) # Kept if you use a custom message interface to also pass timestep value
+        # timestep = float(imgz_name.split(".")[0])
         self.frame_id = self.frame_id + 1  
         #print(img_look_up_path)
         # print(f"Frame ID: {frame_id}")
@@ -274,11 +278,6 @@ def main(args = None):
     finish_msg.data = "done"
     n.publish_finish_.publish(finish_msg)
     print("✅ All images sent. Published 'done' signal to /mono_py_driver/finished")
-
-    # finish_msg = String()
-    # finish_msg.data = "done"
-    # n.publish_finish_.publish(finish_msg)
-    # print("✅ All images sent. Published 'done' signal to /mono_py_driver/finished")
     
     # Test
     # 1. Localization Mode ON
@@ -289,8 +288,8 @@ def main(args = None):
     time.sleep(30)
 
     # 1. Localization Mode ON
-    print("-----Sample new data with same environment-----")
-    n.send_localization_mode("Localization")
+    # print("-----Sample new data with same environment-----")
+    # n.send_localization_mode("Localization")
 
     # 2. 새로운 Image를 publish
     n.frame_id = 0
@@ -313,6 +312,29 @@ def main(args = None):
     n.publish_finish_.publish(finish_msg)
     print("✅ New images sent. Published 'done' signal to /mono_py_driver/finished")
     
+    time.sleep(30)
+    
+    # 3. 새로운 Image를 publish
+    n.frame_id = 0
+    for idx, imgz_name in enumerate(n.imgz_seqz_local2[0:n.end_frame]):
+        try:
+            rclpy.spin_once(n) # Blocking we need a non blocking take care of callbacks
+            n.run_py_node(idx, imgz_name, mode="Localization2")
+            rate.sleep()
+
+            # DEBUG, if you want to halt sending images after a certain Frame is reached
+            if (n.frame_id>n.frame_stop and n.frame_stop != -1):
+                print(f"BREAK!")
+                break
+        
+        except KeyboardInterrupt:
+            break
+
+    finish_msg = String()
+    finish_msg.data = "done"
+    n.publish_finish_.publish(finish_msg)
+    print("✅ New images sent. Published 'done' signal to /mono_py_driver/finished")
+
     # Cleanup
     cv2.destroyAllWindows() # Close all image windows
     n.destroy_node() # Release all resource related to this node

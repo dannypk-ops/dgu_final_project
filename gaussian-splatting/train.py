@@ -56,15 +56,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
     if checkpoint:
         print("restore_before_model...")
         (model_params, first_iter) = torch.load(checkpoint)
-        # init_gaussians = GaussianModel(dataset.sh_degree, opt.optimizer_type)
-        # _ = Scene(dataset, init_gaussians)
-        # init_gaussians.restore(model_params, opt)
-
-        # gaussians.merge_gs(init_gaussians)
-        # gaussians.training_setup(opt)
         gaussians.restore(model_params, opt)
-        gaussians.training_setup(opt)
-        print(f"Number of Gaussians : {gaussians.get_xyz.shape}")
 
     bg_color = [1, 1, 1] if dataset.white_background else [0, 0, 0]
     background = torch.tensor(bg_color, dtype=torch.float32, device="cuda")
@@ -81,7 +73,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
     ema_Ll1depth_for_log = 0.0
 
     # scene의 camera의 수에 따라서 최종 iterations가 수정이 되게끔 구현
-    opt.iterations = len(scene.getTrainCameras()) * 100 if len(scene.getTrainCameras()) >= 100 else 30000
+    opt.iterations = len(scene.getTrainCameras()) * 100 if len(scene.getTrainCameras()) >= 300 else 30000
     opt.densify_until_iter = opt.iterations // 2
     checkpoint_iterations = [opt.iterations]
     saving_iterations = [opt.iterations]
@@ -292,7 +284,7 @@ if __name__ == "__main__":
     safe_state(args.quiet)
 
     # Start GUI server, configure and run training
-    # if not args.disable_viewer:
+    # if not args.disable_viewer:cs
     #     network_gui.init(args.ip, args.port)
     torch.autograd.set_detect_anomaly(args.detect_anomaly)
     training(lp.extract(args), op.extract(args), pp.extract(args), args.test_iterations, args.save_iterations, args.checkpoint_iterations, args.start_checkpoint, args.debug_from)

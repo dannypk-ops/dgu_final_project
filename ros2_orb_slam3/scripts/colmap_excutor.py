@@ -84,26 +84,7 @@ def run_sparse_reconstruction(base_folder, poses_path, image_dir, db_path):
         "--input_path", created_sparse_folder,
         "--output_path", final_folder
     ])
-
-    # run_colmap_cmd([
-    # "point_triangulator",
-    # "--database_path", db_path,
-    # "--image_path",  image_dir,
-    # "--input_path",  created_sparse_folder,
-    # "--output_path", final_folder,
-
-    # # ── 기존 KeyFrame 포즈를 완전히 고정 ──
-    # "--Mapper.fix_existing_images",          "1",   # 입력 모델에 있는 카메라는 절대 건드리지 않음
-    # "--Mapper.ba_global_max_num_iterations", "0",   # 전역 BA 패스 건너뜀
-    # "--Mapper.ba_local_max_num_iterations",  "0",   # 국소 BA 패스 건너뜀
-
-    # # (선택) 내재 파라미터까지 잠그고 싶다면
-    # "--Mapper.ba_refine_focal_length",       "0",
-    # "--Mapper.ba_refine_principal_point",    "0",
-    # "--Mapper.ba_refine_extra_params",       "0"
-    # ])
     
-
     # Bundle Adjustment (Pose 고정)
     # run_colmap_cmd([
     #     "bundle_adjuster",
@@ -111,12 +92,26 @@ def run_sparse_reconstruction(base_folder, poses_path, image_dir, db_path):
     #     "--output_path", final_folder
     # ])
 
+    run_colmap_cmd([
+        "bundle_adjuster",
+        "--input_path", final_folder,
+        "--output_path", final_folder,
+        "--BundleAdjustment.max_num_iterations", "200",
+        "--BundleAdjustment.function_tolerance", "1e-8",
+        "--BundleAdjustment.gradient_tolerance", "1e-10",
+        "--BundleAdjustment.parameter_tolerance", "1e-10",
+        "--BundleAdjustment.refine_focal_length", "0",
+        "--BundleAdjustment.refine_principal_point", "0",
+        "--BundleAdjustment.refine_extra_params", "0",
+    ])
+
+
     # 모델 변환 (BIN 저장)
     run_colmap_cmd([
         "model_converter",
         "--input_path", final_folder,
         "--output_path", final_folder,
-        "--output_type", "BIN"
+        "--output_type", "TXT"
     ])
 
     move_images_to_dir(image_dir, image_store_dir)
@@ -130,7 +125,7 @@ class ColmapPipelineNode(Node):
     def __init__(self):
         super().__init__('colmap_pipeline_node')
         self.sub = self.create_subscription(
-            String, '/mono_py_driver/SLAM_done', self.callback, 10
+            String, '/stereo_py_driver/SLAM_done', self.callback, 10
         )
 
         self.gs_pub = self.create_publisher(  # ← 새로운 publisher 추가

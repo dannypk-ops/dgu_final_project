@@ -156,6 +156,7 @@ install(FILES ${g2o_PATH} DESTINATION lib)
 add_executable(mono_node_cpp
   src/mono_example.cpp
   src/common.cpp
+  src/stereo_common.cpp
 )
 
 ament_target_dependencies(mono_node_cpp
@@ -178,6 +179,19 @@ install(TARGETS mono_node_cpp orb_slam3_lib
   INCLUDES DESTINATION include/${PROJECT_NAME}
 )
 
+# 기존 mono_node_cpp 그대로 두고
+add_executable(stereo_node_cpp
+  src/stereo_example.cpp        # 예: stereo 전용 main
+  src/stereo_common.cpp
+  src/common.cpp                # 중복 정의 함수는 주의!
+)
+ament_target_dependencies(stereo_node_cpp PUBLIC ${THIS_PACKAGE_INCLUDE_DEPENDS})
+target_link_libraries(stereo_node_cpp PUBLIC orb_slam3_lib)
+
+install(TARGETS stereo_node_cpp
+        RUNTIME DESTINATION lib/${PROJECT_NAME})
+  
+        
 # Tell downstream packages where to find the headers
 ament_export_include_directories(include)
 
@@ -196,6 +210,8 @@ ament_export_dependencies(
 install(PROGRAMS
   scripts/mono_driver_node.py
   scripts/colmap_excutor.py
+  scripts/mono_colmap_excutor.py
+  scripts/stereo_driver_node.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

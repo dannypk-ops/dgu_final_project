@@ -238,6 +238,22 @@ Sophus::SE3f System::TrackStereo(const cv::Mat &imLeft, const cv::Mat &imRight, 
 
         cv::remap(imLeft, imLeftToFeed, M1l, M2l, cv::INTER_LINEAR);
         cv::remap(imRight, imRightToFeed, M1r, M2r, cv::INTER_LINEAR);
+
+        // --- 디버그: 두 장을 가로로 붙여 저장 ---
+        static int dbg_id = 0;
+        cv::Mat cat;
+        cv::hconcat(imLeftToFeed, imRightToFeed, cat);
+
+        // 가로선 10 px 간격으로 표시 (epipolar 확인용)
+        for(int y = 0; y < cat.rows; y += 10)
+            cv::line(cat, cv::Point(0,y), cv::Point(cat.cols,y),
+                    cv::Scalar(0,255,0), 1);
+
+        std::ostringstream oss;
+        oss << "/home/jk/Desktop/tmp/rect_debug_" << dbg_id++ << ".png";
+        cv::imwrite(oss.str(), cat);
+        // ------------------------------------------
+
     }
     else if(settings_ && settings_->needToResize()){
         cv::resize(imLeft,imLeftToFeed,settings_->newImSize());
@@ -714,10 +730,9 @@ void System::SaveTrajectoryEuRoC(const string &filename, std::vector<int> keyfra
     std::cout << "\n🔸 Saving *KeyFrame-only* trajectory to "
               << filename << " ...\n";
 
-    /* --- 가장 큰 맵 선택 ------------------------------------------------ */
-    std::vector<Map*> vpMaps = mpAtlas->GetAllMaps();
-    Map* pBiggerMap = nullptr; std::size_t numMaxKFs = 0;
-    for (Map* pMap : vpMaps)
+    /* --- 0. 가장 큰 Map 선택 ------------------------------------------ */
+    Map* pBiggerMap = nullptr;        std::size_t numMaxKFs = 0;
+    for (Map* pMap : mpAtlas->GetAllMaps())
         if (pMap->GetAllKeyFrames().size() > numMaxKFs)
             { numMaxKFs = pMap->GetAllKeyFrames().size(); pBiggerMap = pMap; }
 
@@ -726,63 +741,58 @@ void System::SaveTrajectoryEuRoC(const string &filename, std::vector<int> keyfra
     }
 
     std::vector<KeyFrame*> vpKFs = pBiggerMap->GetAllKeyFrames();
-    std::sort(vpKFs.begin(), vpKFs.end(), KeyFrame::lId);
+    std::sort(vpKFs.begin(), vpKFs.end(), KeyFrame::lId);      // ID 오름차순
 
-    /* --- 기준 좌표계 ----------------------------------------------------- */
-    Sophus::SE3f Twb = (mSensor == IMU_MONOCULAR || mSensor == IMU_STEREO || mSensor == IMU_RGBD)
-                       ? vpKFs[0]->GetImuPose()
-                       : vpKFs[0]->GetPoseInverse();
+    /* --- 1. 좌표계 기준 ------------------------------------------------ */
+    const bool imu = (mSensor == IMU_MONOCULAR || mSensor == IMU_STEREO || mSensor == IMU_RGBD);
+    const Sophus::SE3f Twb = imu ? vpKFs[0]->GetImuPose()
+                                 : vpKFs[0]->GetPoseInverse();
 
-    std::ofstream f(filename.c_str());  f << std::fixed;
-
+    /* --- 2. 집합 초기화 ----------------------------------------------- */
     std::unordered_set<std::size_t> seen_ids(keyframe_index.begin(),
                                              keyframe_index.end());
-    std::unordered_set<std::size_t> saved_ids;   // 이번 함수에서 이미 기록한 ID
-    std::unordered_set<std::size_t> remove_ids;  // 새 KF 와 연결된 기존(seen) KF
+    std::unordered_set<std::size_t> remove_ids;   // 새 KF와 강하게 연결된 기존 KF
 
-    /* ---------- ① 새( seen 아님 ) KF 먼저 기록 -------------------------- */
-    for (KeyFrame* pKF : vpKFs)
-    {
-        if (!pKF || pKF->isBad() || pKF->imRGB.empty())           continue;
-        if (seen_ids.count(pKF->mnId) || saved_ids.count(pKF->mnId)) continue;
-
-        Sophus::SE3f Twc = (mSensor == IMU_MONOCULAR || mSensor == IMU_STEREO || mSensor == IMU_RGBD)
-                           ? pKF->GetImuPose() * Twb
-                           : pKF->GetPose()    * Twb;
-
-        const Eigen::Quaternionf q = Twc.unit_quaternion();
-        const Eigen::Vector3f    t = Twc.translation();
-
-        f << std::setprecision(6) << 1e9 * pKF->mTimeStamp << " "
-          << std::setprecision(9)
-          << t.x() << " " << t.y() << " " << t.z() << " "
-          << q.x() << " " << q.y() << " " << q.z() << " " << q.w() << '\n';
-
-        saved_ids.insert(pKF->mnId);
-    }
-
-    /* ---------- ② remove_ids 수집 -------------------------------------- */
+    /* ---------- 2‑A. remove_ids (엘보 컷) ------------------------------ */
     for (KeyFrame* pKF : vpKFs)
     {
         if (!pKF || pKF->isBad() || pKF->imRGB.empty()) continue;
-        if (seen_ids.count(pKF->mnId)) continue;               // 새 KF 만
+        if (seen_ids.count(pKF->mnId))              continue;   // 새 KF 만
 
-        const std::set<KeyFrame*>& sNeigh = pKF->GetConnectedKeyFrames();
-        for (KeyFrame* pNeigh : sNeigh)
-            if (pNeigh && !pNeigh->isBad() && !pNeigh->imRGB.empty()
-                &&  seen_ids.count(pNeigh->mnId))
-                remove_ids.insert(pNeigh->mnId);               // 제외 대상
+        const auto& vCov = pKF->GetCovisiblesByWeight(0);       // weight 내림차순
+        if (vCov.size() < 2) continue;
+
+        std::vector<int> w;  w.reserve(vCov.size());
+        for (auto* n : vCov) w.push_back(pKF->GetWeight(n));
+
+        /* 엘보: 가장 큰 Δ 위치 */
+        int cut = 0, max_gap = -1;
+        for (std::size_t i = 0; i + 1 < w.size(); ++i) {
+            int gap = w[i] - w[i + 1];
+            if (gap > max_gap) { max_gap = gap; cut = static_cast<int>(i); }
+        }
+
+        /* cut 이전 이웃이면서 seen KF → remove_ids */
+        for (int i = 0; i <= cut; ++i) {
+            KeyFrame* pNeigh = vCov[i];
+            if (!pNeigh || pNeigh->isBad() || pNeigh->imRGB.empty()) continue;
+            if (seen_ids.count(pNeigh->mnId))
+                remove_ids.insert(pNeigh->mnId);
+        }
     }
 
-    /* ---------- ③ 나머지 KF 기록 --------------------------------------- */
+    /* --- 3. 단일‑패스 기록 ------------------------------------------- */
+    std::ofstream f(filename.c_str());  f << std::fixed;
+
     for (KeyFrame* pKF : vpKFs)
     {
-        if (!pKF || pKF->isBad() || pKF->imRGB.empty())           continue;
-        if (remove_ids.count(pKF->mnId) || saved_ids.count(pKF->mnId)) continue;
+        if (!pKF || pKF->isBad() || pKF->imRGB.empty()) continue;
 
-        Sophus::SE3f Twc = (mSensor == IMU_MONOCULAR || mSensor == IMU_STEREO || mSensor == IMU_RGBD)
-                           ? pKF->GetImuPose() * Twb
-                           : pKF->GetPose()    * Twb;
+        const std::size_t id = pKF->mnId;
+        if (remove_ids.count(id))                         continue;   // 제외
+
+        const Sophus::SE3f Twc = imu ? pKF->GetImuPose() * Twb
+                                     : pKF->GetPose()    * Twb;
 
         const Eigen::Quaternionf q = Twc.unit_quaternion();
         const Eigen::Vector3f    t = Twc.translation();
@@ -791,8 +801,6 @@ void System::SaveTrajectoryEuRoC(const string &filename, std::vector<int> keyfra
           << std::setprecision(9)
           << t.x() << " " << t.y() << " " << t.z() << " "
           << q.x() << " " << q.y() << " " << q.z() << " " << q.w() << '\n';
-
-        saved_ids.insert(pKF->mnId);
     }
 
     std::cout << "✅ KeyFrame-only trajectory saved to " << filename << '\n';
