@@ -133,6 +133,21 @@ def safe_state(silent):
     torch.cuda.set_device(torch.device("cuda:0"))
 
 
+def find_latest_model_folder(sparse_root: str) -> str:
+    import os
+    """
+    sparse_root 아래에 있는 숫자 폴더들 중 가장 큰 숫자의 폴더명을 반환합니다.
+    예: ['0','1','2'] → '2'
+    """
+    models = []
+    for name in os.listdir(sparse_root):
+        dir_path = os.path.join(sparse_root, name)
+        if os.path.isdir(dir_path) and name.isdigit():
+            models.append(int(name))
+    if not models:
+        raise RuntimeError(f"No numeric subfolders in {sparse_root}")
+    latest = str(max(models))
+    return os.path.join(sparse_root, latest)
 
 def parsing_path(path):
 
@@ -140,9 +155,12 @@ def parsing_path(path):
     from scene.dataset_readers import SceneInfo
     from scene.colmap_loader import read_extrinsics_binary, read_intrinsics_binary
     from scene.dataset_readers import readColmapCameras, getNerfppNorm, SceneInfo
-
+    
     cameras_extrinsic_file = os.path.join(path, "sparse/0", "images.bin")
     cameras_intrinsic_file = os.path.join(path, "sparse/0", "cameras.bin")
+
+    # TODO : sparse/0이 아니라 1 또는 2가 될 수도 있다.. newest model을 사용해야 할것 같긴 한데..
+
     cam_extrinsics = read_extrinsics_binary(cameras_extrinsic_file)
     cam_intrinsics = read_intrinsics_binary(cameras_intrinsic_file)
 

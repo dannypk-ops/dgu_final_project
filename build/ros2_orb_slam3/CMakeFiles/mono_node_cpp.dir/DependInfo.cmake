@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/jk/ros2_test/src/ros2_orb_slam3/src/common.cpp" "CMakeFiles/mono_node_cpp.dir/src/common.cpp.o" "gcc" "CMakeFiles/mono_node_cpp.dir/src/common.cpp.o.d"
   "/home/jk/ros2_test/src/ros2_orb_slam3/src/mono_example.cpp" "CMakeFiles/mono_node_cpp.dir/src/mono_example.cpp.o" "gcc" "CMakeFiles/mono_node_cpp.dir/src/mono_example.cpp.o.d"
+  "/home/jk/ros2_test/src/ros2_orb_slam3/src/stereo_common.cpp" "CMakeFiles/mono_node_cpp.dir/src/stereo_common.cpp.o" "gcc" "CMakeFiles/mono_node_cpp.dir/src/stereo_common.cpp.o.d"
   )
 
 # Targets to which this target links.

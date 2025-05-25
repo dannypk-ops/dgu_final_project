@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/mono_node_cpp.dir/src/common.cpp.o.d"
   "CMakeFiles/mono_node_cpp.dir/src/mono_example.cpp.o"
   "CMakeFiles/mono_node_cpp.dir/src/mono_example.cpp.o.d"
+  "CMakeFiles/mono_node_cpp.dir/src/stereo_common.cpp.o"
+  "CMakeFiles/mono_node_cpp.dir/src/stereo_common.cpp.o.d"
   "mono_node_cpp"
   "mono_node_cpp.pdb"
 )

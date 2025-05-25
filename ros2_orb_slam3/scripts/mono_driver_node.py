@@ -209,8 +209,8 @@ class MonoDriver(Node):
         else:
             img_look_up_path = self.imgz_seqz_dir_local2 + imgz_name
 
-        timestep = float(imgz_name.split(".")[0].split("_")[1]) # Kept if you use a custom message interface to also pass timestep value
-        # timestep = float(imgz_name.split(".")[0])
+        # timestep = float(imgz_name.split(".")[0].split("_")[1]) # Kept if you use a custom message interface to also pass timestep value
+        timestep = float(imgz_name.split(".")[0])
         self.frame_id = self.frame_id + 1  
         #print(img_look_up_path)
         # print(f"Frame ID: {frame_id}")
@@ -227,20 +227,6 @@ class MonoDriver(Node):
         except CvBridgeError as e:
             print(e)
     # ****************************************************************************************
-
-    def send_localization_mode(self, mode="Localization"):
-        """
-        Sends mode switch command to CPP node.
-        mode: "Localization" or "SLAM"
-        """
-        if mode not in ["Localization", "SLAM"]:
-            print(f"❌ Invalid mode: {mode}")
-            return
-
-        msg = String()
-        msg.data = mode
-        self.publish_localization_mode_.publish(msg)
-        print(f"📤 Sent mode switch command: {mode}")
 
 # main function
 def main(args = None):

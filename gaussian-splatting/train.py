@@ -275,9 +275,9 @@ if __name__ == "__main__":
     
     print("Optimizing " + args.model_path)
 
-    # if __debug__:
-    #     args.source_path = "/home/jk/ros2_test/src/ros2_orb_slam3/colmap_output/iteration0/final"
-        # args.start_checkpoint = "/home/jk/ros2_test/gs_output/model/model.pth"
+    if __debug__:
+        args.source_path = "/home/jk/ros2_test/src/ros2_orb_slam3/colmap_output/iteration0/final"
+        args.start_checkpoint = "/home/jk/ros2_test/gs_output/model/model.pth"
 
     args.start_checkpoint = None
     # Initialize system state (RNG)

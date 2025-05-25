@@ -115,9 +115,31 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/ros2_orb_slam3/stereo_node_cpp" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/ros2_orb_slam3/stereo_node_cpp")
+    file(RPATH_CHECK
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/ros2_orb_slam3/stereo_node_cpp"
+         RPATH "")
+  endif()
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/ros2_orb_slam3" TYPE EXECUTABLE FILES "/home/jk/ros2_test/src/build/ros2_orb_slam3/stereo_node_cpp")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/ros2_orb_slam3/stereo_node_cpp" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/ros2_orb_slam3/stereo_node_cpp")
+    file(RPATH_CHANGE
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/ros2_orb_slam3/stereo_node_cpp"
+         OLD_RPATH "/home/jk/ros2_test/src/build/ros2_orb_slam3:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/local/lib:/home/jk/ros2_test/src/ros2_orb_slam3/orb_slam3/Thirdparty/DBoW2/lib:/home/jk/ros2_test/src/ros2_orb_slam3/orb_slam3/Thirdparty/g2o/lib:"
+         NEW_RPATH "")
+    if(CMAKE_INSTALL_DO_STRIP)
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/ros2_orb_slam3/stereo_node_cpp")
+    endif()
+  endif()
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/ros2_orb_slam3" TYPE PROGRAM FILES
     "/home/jk/ros2_test/src/ros2_orb_slam3/scripts/mono_driver_node.py"
     "/home/jk/ros2_test/src/ros2_orb_slam3/scripts/colmap_excutor.py"
+    "/home/jk/ros2_test/src/ros2_orb_slam3/scripts/mono_colmap_excutor.py"
+    "/home/jk/ros2_test/src/ros2_orb_slam3/scripts/stereo_driver_node.py"
     )
 endif()
 

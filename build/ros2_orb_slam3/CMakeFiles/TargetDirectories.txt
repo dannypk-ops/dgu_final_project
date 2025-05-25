@@ -2,6 +2,7 @@
 /home/jk/ros2_test/src/build/ros2_orb_slam3/CMakeFiles/ros2_orb_slam3_uninstall.dir
 /home/jk/ros2_test/src/build/ros2_orb_slam3/CMakeFiles/orb_slam3_lib.dir
 /home/jk/ros2_test/src/build/ros2_orb_slam3/CMakeFiles/mono_node_cpp.dir
+/home/jk/ros2_test/src/build/ros2_orb_slam3/CMakeFiles/stereo_node_cpp.dir
 /home/jk/ros2_test/src/build/ros2_orb_slam3/CMakeFiles/ros2_orb_slam3.dir
 /home/jk/ros2_test/src/build/ros2_orb_slam3/CMakeFiles/ros2_orb_slam3__rosidl_generator_c.dir
 /home/jk/ros2_test/src/build/ros2_orb_slam3/CMakeFiles/ros2_orb_slam3__rosidl_typesupport_fastrtps_c.dir

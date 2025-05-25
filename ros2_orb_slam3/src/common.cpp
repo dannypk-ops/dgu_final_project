@@ -262,32 +262,31 @@ void MonocularMode::finish_callback(const std_msgs::msg::String& msg)
         if (seen_ids.count(pKF->mnId))                  continue;   // 새 KF
 
         /* (1) weight 내림차순 리스트 */
-        const auto& vCov = pKF->GetCovisiblesByWeight(0);
-        if (vCov.size() < 2) continue;                              // 이웃이 0·1개면 컷 불필요
+        // const auto& vCov = pKF->GetCovisiblesByWeight(0);
+        // covisibility가 가장 높은 상위 30개의 keyframe을 추출
+        const auto& vCov = pKF->GetBestCovisibilityKeyFrames(30);
+        if (vCov.size() < 1) continue;                              // 이웃이 0개면 컷 불필요
 
         /* (2) weight 배열 추출 */
         std::vector<int> w;
         w.reserve(vCov.size());
         for (auto* n : vCov) w.push_back(pKF->GetWeight(n));
 
-        /* (3) 최대 갭 위치 찾기 */
-        int cut_idx = 0;                // keep vCov[0 .. cut_idx] inclusive
-        int max_gap = -1;
-        for (std::size_t i = 0; i + 1 < w.size(); ++i) {
-            int gap = w[i] - w[i + 1];
-            if (gap > max_gap) { max_gap = gap; cut_idx = static_cast<int>(i); }
-        }
+        /* (3) weight의 임계값 추출 */
+        // double sum = std::accumulate(w.begin(), w.end(), 0.0);
+        // double mean = sum / w.size();
+        // double sq_sum = std::inner_product(w.begin(), w.end(), w.begin(), 0.0);
+        // double stddev = std::sqrt(sq_sum / w.size() - mean * mean);
+        // double dynamic_threshold = mean + 0.5 * stddev;
 
-        /* (4) cut_idx 이전 이웃만 remove_ids 후보 */
-        for (int i = 0; i <= cut_idx; ++i) {
+        /* (4) remove_ids 후보 */
+        // seen_ids에 포함되어 있으면서, 많은 갯수의 covisibility를 기록하고 있는 경우.
+        for (int i = 0; i < vCov.size(); ++i) {
             ORB_SLAM3::KeyFrame* pNeigh = vCov[i];
             if (!pNeigh || pNeigh->isBad() || pNeigh->imRGB.empty()) continue;
-            if (seen_ids.count(pNeigh->mnId)) {
+            // if (seen_ids.count(pNeigh->mnId) && w[i] >= dynamic_threshold){
+            if (seen_ids.count(pNeigh->mnId) && w[i] >= 100){
                 remove_ids.insert(pNeigh->mnId);
-                // std::cout << "neigh="   << pNeigh->mnId
-                //         << " weight=" << w[i]
-                //         << " gap="    << max_gap
-                //         << '\n';
             }
         }
     }
@@ -314,11 +313,12 @@ void MonocularMode::finish_callback(const std_msgs::msg::String& msg)
             << "_id" << id << ".png";
 
         if (cv::imwrite(oss.str(), dit->second.image)) {
-            std::cout << "✅ Saved: " << oss.str() << '\n';
+            // std::cout << "✅ Saved: " << oss.str() << '\n';
             keyframe_index.push_back(id);   // 다음 회차부터 seen
             saved_ids.insert(id);
         }
     }
+    std::cout << "✅ Images saved" << '\n';
 
     // 다음 image stream을 위하여 삭제된 keyframe index 유지.
     // keyframe_index 최신화

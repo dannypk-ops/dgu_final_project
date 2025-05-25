@@ -1,0 +1,260 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-e9cb7a8cababc9bd1f8a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20
+					]
+				},
+				{
+					"build" : "ros2_orb_slam3__py",
+					"jsonFile" : "directory-ros2_orb_slam3__py-4c769ebdfe4130ab8f5f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/jk/ros2_test/src/build/ros2_orb_slam3/ros2_orb_slam3__py",
+					"targetIndexes" : 
+					[
+						6
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "ros2_orb_slam3",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_ros2_orb_slam3_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_ros2_orb_slam3_egg-f269e7f1a37799f34cb7.json",
+					"name" : "ament_cmake_python_build_ros2_orb_slam3_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_ros2_orb_slam3::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_ros2_orb_slam3-8e9b44691cd85e4795e0.json",
+					"name" : "ament_cmake_python_copy_ros2_orb_slam3",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mono_node_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mono_node_cpp-1e4393b71fc636b97919.json",
+					"name" : "mono_node_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "orb_slam3_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-orb_slam3_lib-36fb2fa0e4064c64d24e.json",
+					"name" : "orb_slam3_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros2_orb_slam3::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros2_orb_slam3-d245b5aa191c46b3f46c.json",
+					"name" : "ros2_orb_slam3",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros2_orb_slam3__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros2_orb_slam3__cpp-14917f1c45e71c14534a.json",
+					"name" : "ros2_orb_slam3__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ros2_orb_slam3__py::@24f034ff47bae67a4458",
+					"jsonFile" : "target-ros2_orb_slam3__py-d576549142313ebf6ab4.json",
+					"name" : "ros2_orb_slam3__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros2_orb_slam3__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros2_orb_slam3__rosidl_generator_c-67146260e9435d601164.json",
+					"name" : "ros2_orb_slam3__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros2_orb_slam3__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros2_orb_slam3__rosidl_generator_py-eb35205d8419abef5972.json",
+					"name" : "ros2_orb_slam3__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros2_orb_slam3__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros2_orb_slam3__rosidl_typesupport_c-cf367b4c14f2f0bc4711.json",
+					"name" : "ros2_orb_slam3__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros2_orb_slam3__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros2_orb_slam3__rosidl_typesupport_c__pyext-d1121086fccd4552e4e2.json",
+					"name" : "ros2_orb_slam3__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros2_orb_slam3__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros2_orb_slam3__rosidl_typesupport_cpp-bc961d55155432451a22.json",
+					"name" : "ros2_orb_slam3__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros2_orb_slam3__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros2_orb_slam3__rosidl_typesupport_fastrtps_c-99c9a369bd9a8b676fd6.json",
+					"name" : "ros2_orb_slam3__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros2_orb_slam3__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros2_orb_slam3__rosidl_typesupport_fastrtps_c__pyext-ad4bfbaffc69c31112c4.json",
+					"name" : "ros2_orb_slam3__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros2_orb_slam3__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros2_orb_slam3__rosidl_typesupport_fastrtps_cpp-b0178f1b138b3f624ba3.json",
+					"name" : "ros2_orb_slam3__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros2_orb_slam3__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros2_orb_slam3__rosidl_typesupport_introspection_c-20b5758844771cc89824.json",
+					"name" : "ros2_orb_slam3__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros2_orb_slam3__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros2_orb_slam3__rosidl_typesupport_introspection_c__pyext-08c9976af5b8c6d60b46.json",
+					"name" : "ros2_orb_slam3__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros2_orb_slam3__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros2_orb_slam3__rosidl_typesupport_introspection_cpp-6189a00cf6ba10de8a4d.json",
+					"name" : "ros2_orb_slam3__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros2_orb_slam3_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros2_orb_slam3_uninstall-76da4637e5856aefdc64.json",
+					"name" : "ros2_orb_slam3_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "stereo_node_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-stereo_node_cpp-45b397e8746a0f76a17a.json",
+					"name" : "stereo_node_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-51685eae7cac8920e26b.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/jk/ros2_test/src/build/ros2_orb_slam3",
+		"source" : "/home/jk/ros2_test/src/ros2_orb_slam3"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

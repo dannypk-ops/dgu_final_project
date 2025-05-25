@@ -224,6 +224,19 @@ mono_node_cpp/fast:
 .PHONY : mono_node_cpp/fast
 
 #=============================================================================
+# Target rules for targets named stereo_node_cpp
+
+# Build rule for target.
+stereo_node_cpp: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 stereo_node_cpp
+.PHONY : stereo_node_cpp
+
+# fast build rule for target.
+stereo_node_cpp/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stereo_node_cpp.dir/build.make CMakeFiles/stereo_node_cpp.dir/build
+.PHONY : stereo_node_cpp/fast
+
+#=============================================================================
 # Target rules for targets named ros2_orb_slam3
 
 # Build rule for target.
@@ -1373,6 +1386,7 @@ src/common.o: src/common.cpp.o
 # target to build an object file
 src/common.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mono_node_cpp.dir/build.make CMakeFiles/mono_node_cpp.dir/src/common.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stereo_node_cpp.dir/build.make CMakeFiles/stereo_node_cpp.dir/src/common.cpp.o
 .PHONY : src/common.cpp.o
 
 src/common.i: src/common.cpp.i
@@ -1381,6 +1395,7 @@ src/common.i: src/common.cpp.i
 # target to preprocess a source file
 src/common.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mono_node_cpp.dir/build.make CMakeFiles/mono_node_cpp.dir/src/common.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stereo_node_cpp.dir/build.make CMakeFiles/stereo_node_cpp.dir/src/common.cpp.i
 .PHONY : src/common.cpp.i
 
 src/common.s: src/common.cpp.s
@@ -1389,6 +1404,7 @@ src/common.s: src/common.cpp.s
 # target to generate assembly for a file
 src/common.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mono_node_cpp.dir/build.make CMakeFiles/mono_node_cpp.dir/src/common.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stereo_node_cpp.dir/build.make CMakeFiles/stereo_node_cpp.dir/src/common.cpp.s
 .PHONY : src/common.cpp.s
 
 src/mono_example.o: src/mono_example.cpp.o
@@ -1414,6 +1430,57 @@ src/mono_example.s: src/mono_example.cpp.s
 src/mono_example.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mono_node_cpp.dir/build.make CMakeFiles/mono_node_cpp.dir/src/mono_example.cpp.s
 .PHONY : src/mono_example.cpp.s
+
+src/stereo_common.o: src/stereo_common.cpp.o
+.PHONY : src/stereo_common.o
+
+# target to build an object file
+src/stereo_common.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mono_node_cpp.dir/build.make CMakeFiles/mono_node_cpp.dir/src/stereo_common.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stereo_node_cpp.dir/build.make CMakeFiles/stereo_node_cpp.dir/src/stereo_common.cpp.o
+.PHONY : src/stereo_common.cpp.o
+
+src/stereo_common.i: src/stereo_common.cpp.i
+.PHONY : src/stereo_common.i
+
+# target to preprocess a source file
+src/stereo_common.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mono_node_cpp.dir/build.make CMakeFiles/mono_node_cpp.dir/src/stereo_common.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stereo_node_cpp.dir/build.make CMakeFiles/stereo_node_cpp.dir/src/stereo_common.cpp.i
+.PHONY : src/stereo_common.cpp.i
+
+src/stereo_common.s: src/stereo_common.cpp.s
+.PHONY : src/stereo_common.s
+
+# target to generate assembly for a file
+src/stereo_common.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mono_node_cpp.dir/build.make CMakeFiles/mono_node_cpp.dir/src/stereo_common.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stereo_node_cpp.dir/build.make CMakeFiles/stereo_node_cpp.dir/src/stereo_common.cpp.s
+.PHONY : src/stereo_common.cpp.s
+
+src/stereo_example.o: src/stereo_example.cpp.o
+.PHONY : src/stereo_example.o
+
+# target to build an object file
+src/stereo_example.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stereo_node_cpp.dir/build.make CMakeFiles/stereo_node_cpp.dir/src/stereo_example.cpp.o
+.PHONY : src/stereo_example.cpp.o
+
+src/stereo_example.i: src/stereo_example.cpp.i
+.PHONY : src/stereo_example.i
+
+# target to preprocess a source file
+src/stereo_example.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stereo_node_cpp.dir/build.make CMakeFiles/stereo_node_cpp.dir/src/stereo_example.cpp.i
+.PHONY : src/stereo_example.cpp.i
+
+src/stereo_example.s: src/stereo_example.cpp.s
+.PHONY : src/stereo_example.s
+
+# target to generate assembly for a file
+src/stereo_example.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stereo_node_cpp.dir/build.make CMakeFiles/stereo_node_cpp.dir/src/stereo_example.cpp.s
+.PHONY : src/stereo_example.cpp.s
 
 # Help Target
 help:
@@ -1448,6 +1515,7 @@ help:
 	@echo "... ros2_orb_slam3__rosidl_typesupport_introspection_c"
 	@echo "... ros2_orb_slam3__rosidl_typesupport_introspection_c__pyext"
 	@echo "... ros2_orb_slam3__rosidl_typesupport_introspection_cpp"
+	@echo "... stereo_node_cpp"
 	@echo "... orb_slam3/src/Atlas.o"
 	@echo "... orb_slam3/src/Atlas.i"
 	@echo "... orb_slam3/src/Atlas.s"
@@ -1571,6 +1639,12 @@ help:
 	@echo "... src/mono_example.o"
 	@echo "... src/mono_example.i"
 	@echo "... src/mono_example.s"
+	@echo "... src/stereo_common.o"
+	@echo "... src/stereo_common.i"
+	@echo "... src/stereo_common.s"
+	@echo "... src/stereo_example.o"
+	@echo "... src/stereo_example.i"
+	@echo "... src/stereo_example.s"
 .PHONY : help
 
 

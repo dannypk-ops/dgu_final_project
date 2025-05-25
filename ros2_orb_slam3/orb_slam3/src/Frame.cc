@@ -509,7 +509,9 @@ Frame::Frame(bool mbRGB, cv::Mat &imRGB, const cv::Mat &imGray, const double &ti
 #ifdef REGISTER_TIMES
     std::chrono::steady_clock::time_point time_StartExtORB = std::chrono::steady_clock::now();
 #endif
-    ExtractORB(0,imGray,0,1000);
+    // ExtractORB(0,imGray,0,1000);
+    // 이미지 크기에 따라 조절 ( 고정된 범위 없음 )
+    ExtractORB(0,imGray,0,imGray.cols);
 #ifdef REGISTER_TIMES
     std::chrono::steady_clock::time_point time_EndExtORB = std::chrono::steady_clock::now();
 

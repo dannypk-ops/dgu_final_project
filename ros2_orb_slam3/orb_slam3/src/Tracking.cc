@@ -1993,7 +1993,6 @@ void Tracking::Track()
                         bOK = TrackReferenceKeyFrame();
                 }
 
-
                 if (!bOK)
                 {
                     if ( mCurrentFrame.mnId<=(mnLastRelocFrameId+mnFramesToResetIMU) &&
@@ -2817,6 +2816,7 @@ bool Tracking::TrackReferenceKeyFrame()
         return true;
     else
         return nmatchesMap>=10;
+        // return true;
 }
 
 void Tracking::UpdateLastFrame()
